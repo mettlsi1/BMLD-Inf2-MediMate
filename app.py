@@ -1,3 +1,6 @@
+#Muss bearbeitet werden!
+
+
 import pandas as pd 
 import streamlit as st
 
