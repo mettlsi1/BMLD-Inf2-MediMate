@@ -1,4 +1,4 @@
-# BMLD-Inf2-BMICalcV3
-Full blown example of BMI Calculator with user specific login
+# BMLD-Inf2-MediMate
+Your app to track your medication right
 
-Link to the app: https://bmi-rechner-v3.streamlit.app
+Link to the app: 
