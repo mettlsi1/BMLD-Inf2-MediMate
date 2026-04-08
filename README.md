@@ -1,6 +1,7 @@
 # BMLD-Inf2-MediMate
 
-Your app to track your medication successfully
+-Your app to track your medication successfully-
+MediMate ist eine personalisierte Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen.
 
 Link to the app:
 
