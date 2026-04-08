@@ -30,6 +30,8 @@ Neue Ideen?
 - Belohnungsmitteilung (Smile etc.) bei neuem Eintrag
 - Anzeige von Notfallnummern oder Handlungsempfehlungen bei kritischen Werten
 - Einfügen einer Darstellung eines Blutdruckgerätes mit markierten Werten
+
 Neue Probleme?
+
 - Unterscheidung systolischem diastolischem Wert bei Eingabe
 - Überarbeitung des Namens für den Button «Blutdruck»
