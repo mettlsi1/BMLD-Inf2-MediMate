@@ -11,21 +11,26 @@
 
 ### Kurzbiografie
 
-Anna Keller lebt seit ihrer Pensionierung alleine in einer Wohnung in Zürich. Sie ist aktiv, geht gerne spazieren und trifft sich regelmäßig mit Freundinnen. Seit einigen Jahren leidet sie jedoch an Bluthochdruck und Typ-2-Diabetes, weshalb sie täglich mehrere Medikamente zu unterschiedlichen Zeiten einnehmen muss.
+Anna Keller lebt seit ihrer Pensionierung und dem Tod ihres Mannes allein in einer Wohnung in Zürich. Trotz dieser Veränderungen gestaltet sie ihren Alltag aktiv und abwechslungsreich: Sie engagiert sich in einem Turnverein, unternimmt gerne Spaziergänge mit ihren beiden Dackeln und pflegt regelmäßig den Austausch mit ihren Freundinnen. Seit einigen Jahren ist sie jedoch von Bluthochdruck betroffen, weshalb sie täglich mehrere Medikamente zu unterschiedlichen Zeiten einnehmen muss.
 
 ### Das Problem das gelöst werden soll
 
-Im Alltag vergisst Anna gelegentlich eine Einnahme oder ist unsicher, ob sie ihre Medikamente bereits genommen hat. Das verunsichert sie und führt manchmal zu Stress. Ihre Kinder wohnen nicht in der Nähe, deshalb organisiert sie ihren Alltag weitgehend selbstständig.
-Anna nutzt ein Smartphone für Nachrichten und einfache Apps, fühlt sich aber bei komplizierten Anwendungen schnell überfordert. Eine übersichtliche, leicht verständliche Medikamenten-Erinnerungs-App würde ihr helfen, ihre Gesundheit besser im Griff zu behalten und sich sicherer zu fühlen.
+Im Alltag kommt es vor, dass Anna eine Medikamenteneinnahme vergisst oder unsicher ist, wann sie welches Medikament einnehmen soll. Zusätzlich fällt es ihr schwer, die beim Blutdruckmessen erhaltenen Werte richtig zu verstehen und einzuordnen. Diese Unsicherheiten verunsichern sie und führen gelegentlich zu Stress.
+Da ihre Kinder nicht in der Nähe wohnen, organisiert Anna ihren Alltag grösstenteils selbstständig. Zwar nutzt sie ein Smartphone für Nachrichten und einfache Anwendungen, doch komplexere Apps überfordern sie schnell.
+Eine übersichtliche und leicht verständliche Medikamenten- und Gesundheitsmonitoring-App könnte Anna dabei unterstützen, ihre Medikamenteneinnahme zuverlässig einzuhalten, ihre Blutdruckwerte besser zu verstehen und insgesamt mehr Sicherheit im Umgang mit ihrer Gesundheit zu gewinnen.
 
 ### Bedürfnisse
 
-- Klare Erinnerungen zur richtigen Zeit
+- Klare Übersicht der einzunehmenden Medikamente
+- Übersicht und sofortige Einstufung ihrer Blutdruckwerte
 - Einfache Bedienung ohne komplizierte Menüs
 
 ### Ziele
 
-- keine Einnahmen zu vergessen oder doppelt zu nehmen
+- Geordnete Übersicht der Medikamente inklusive Einnahmezeit und Dosierung
+- Darstellung des Verlaufs der Blutdruckwerte
+- Einfache Einordnung der gemessenen Werte (im Referenzbereich oder ausserhalb) auf einen Blick
+- Verständliche Erklärung und hilfreiche Tipps bei Abweichungen vom Referenzbereich
 
 ### Ängste & Herausforderungen
 
