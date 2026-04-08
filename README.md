@@ -2,7 +2,7 @@
 
 -Your app to track your medication successfully-
 
-MediMate ist eine personalisierte Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen.
+MediMate ist eine personalisierbare Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen.
 
 Link to the app:
 
