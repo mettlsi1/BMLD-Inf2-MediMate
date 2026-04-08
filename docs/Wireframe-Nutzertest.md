@@ -1,3 +1,5 @@
+# Wireframe-Nutzertest
+
 ## Hypothesen und Bewertungen
 
 Da unsere Zielgruppe ältere Menschen umfasst, wird die App bewusst benutzerfreundlich, übersichtlich und möglichst einfach gestaltet. Die Interaktionen sollen intuitiv verständlich sein, sodass Nutzerinnen und Nutzer ohne grosse Vorkenntnisse problemlos damit umgehen können.
@@ -6,7 +8,7 @@ Unsere Hypothese lautet, dass die Testperson die Funktionen der App selbstständ
 ## Protkoll
 
 - Testperson findet Hauptseite übersichtlich und aufgeräumt
-- Beim öffnen der Medikamentenübersicht findet die Testperson es umständlich nochmals auf den Button «Kalender» drücken zu müssen. 
+- Beim öffnen der Medikamentenübersicht findet die Testperson es umständlich nochmals auf den Button «Kalender» drücken zu müssen.
 - Eingabe eines neuen Medikament ist klar verständlich
 - Testperson findet der Button «Blutdruck» könnte einen passenderen Namen vertragen
 - Die Seite zur Eingabe neuer Blutdruckwerte wird grundsätzlich als gut empfunden. Allerdings ist die Testperson zunächst unsicher, welcher Wert dem systolischen bzw. diastolischen Blutdruck entspricht. Nach einem Blick auf ihr Blutdruckmessgerät wird dies jedoch verständlich.
