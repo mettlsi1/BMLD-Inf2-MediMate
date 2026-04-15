@@ -86,6 +86,11 @@ class LoginManager:
 
     def _login_register_page(self, login_title, register_title):
         """Page function shown when the user is not authenticated."""
+        st.title('Willkommen bei MediMate')
+        st.subheader("Dein Medikamenten-Monitoring-Tool")
+
+        st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu verfolgen. Bitte melden Sie sich an oder registrieren Sie sich, um fortzufahren.")
+        
         login_tab, register_tab = st.tabs((login_title, register_title))
         with login_tab:
             self._login()
