@@ -15,7 +15,7 @@ with st.form("add_medication_form"):
         dosis = st.number_input("Dosis", min_value=0.0, step=0.1, label_visibility="collapsed")
     with col_einheit:
         einheit = st.radio("Einheit", ["mg", "Tabletten"], label_visibility="collapsed")
-    zeit = st.selectbox("Einnahmezeit", ["Morgen", "Mittag", "Abend"])
+    zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"])
     weiteres = st.selectbox("Weiteres", ["Vor dem Essen", "Mit dem Essen", "Nach dem Essen", "--"])
     
     submitted = st.form_submit_button("Hinzufügen")
