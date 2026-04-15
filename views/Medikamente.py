@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-st.title('Medikamente')
+st.title('Deine Medikamente')
 
 # Lade Medikamente aus der Switch Drive, falls nicht im Session-State
 if "medikamente" not in st.session_state:
@@ -12,10 +12,6 @@ if "medikamente" not in st.session_state:
     )
     st.session_state.medikamente = med_df.to_dict('records')
 
-col1, col2, col3 = st.columns(3)
-with col1:
-    if st.button("Medikament hinzufügen"):
-        st.switch_page("views/Medikament_hinzufuegen.py")
 
 st.subheader("Deine Medikamente")
 
@@ -25,3 +21,8 @@ if st.session_state.medikamente:
     st.dataframe(df)
 else:
     st.info("Noch keine Medikamente hinzugefügt.")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("Medikament hinzufügen"):
+        st.switch_page("views/Medikament_hinzufuegen.py")
