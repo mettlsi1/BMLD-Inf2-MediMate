@@ -7,6 +7,10 @@ st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu ve
 
 st.info("""Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
 
+# Neuen Button hier hinzufügen
+if st.button("Medikamente"):
+    st.switch_page("views/Medikamente.py")
+
 st.write("Diese App wurde von den folgenden Personen im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt:")
 st.write("- Jessica Schmid (schmij30@students.zhaw.ch)")
 st.write("- Valeria Schönyan (schoeva1@students.zhaw.ch)")
