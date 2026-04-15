@@ -3,11 +3,9 @@ import streamlit as st
 st.title('Willkommen bei MediMate')
 st.subheader("Dein Medikamenten-Monitoring-Tool")
 
-st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu verfolgen. Bitte melden Sie sich an oder registrieren Sie sich, um fortzufahren.")
-
 st.info("""Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
 
-# Neuen Button hier hinzufügen
+# Button für Medikamentenpage
 if st.button("Meine Medikamente"):
     st.switch_page("views/Medikamente.py")
 
