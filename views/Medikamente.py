@@ -13,8 +13,6 @@ if "medikamente" not in st.session_state:
     st.session_state.medikamente = med_df.to_dict('records')
 
 
-st.subheader("Deine Medikamente")
-
 if st.session_state.medikamente:
     df = pd.DataFrame(st.session_state.medikamente)
     df.index = df.index + 1
