@@ -10,7 +10,11 @@ st.markdown("Bitte fülle die folgenden Felder aus, um ein neues Medikament zu s
 
 with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
-    dosis = st.number_input("Dosis (z. B. in mg)", min_value=0.0, step=0.1)
+    col_dosis, col_einheit = st.columns([3, 2])
+    with col_dosis:
+        dosis = st.number_input("Dosis", min_value=0.0, step=0.1, label_visibility="collapsed")
+    with col_einheit:
+        einheit = st.radio("Einheit", ["mg", "Tabletten"], label_visibility="collapsed")
     zeit = st.selectbox("Einnahmezeit", ["Morgen", "Mittag", "Abend"])
     weiteres = st.selectbox("Weiteres", ["Vor dem Essen", "Mit dem Essen", "Nach dem Essen", "--"])
     
@@ -18,9 +22,10 @@ with st.form("add_medication_form"):
     
     if submitted:
         if name.strip() and dosis > 0:
+            dosis_str = f"{dosis} {einheit}"
             st.session_state.medikamente.append({
                 "Name": name.strip(),
-                "Dosis": dosis,
+                "Dosis": dosis_str,
                 "Zeit": zeit,
                 "Weiteres": weiteres
             })
