@@ -24,16 +24,16 @@ if st.session_state.get("page") == "add_medikament":
     if st.button("Hinzufügen", key="add_button"):
         if name and dosis > 0:
             st.session_state.medikamente.append({
-                "name": name,
-                "dosis": dosis,
-                "zeit": str(zeit)
+                "Name": name,
+                "Dosis": dosis,
+                "Zeit": str(zeit)
             })
             st.success(f"Medikament '{name}' hinzugefügt!")
             st.session_state.page = None
         else:
             st.error("Bitte alle Felder ausfüllen.")
 
-st.subheader("Aufgenommene Medikamente")
+st.subheader("Deine Medikamente")
 
 if st.session_state.medikamente:
     df = pd.DataFrame(st.session_state.medikamente)
