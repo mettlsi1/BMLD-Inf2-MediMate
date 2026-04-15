@@ -78,7 +78,7 @@ if st.session_state.get("page") == "add_medikament":
             st.error("Bitte alle Felder ausfüllen.")
 
 # Automatische Auflistung
-st.subheader("Aufgenommene Medikamente")
+st.subheader("Deine Medikamente")
 
 if st.session_state.medikamente:
     df = pd.DataFrame(st.session_state.medikamente)
