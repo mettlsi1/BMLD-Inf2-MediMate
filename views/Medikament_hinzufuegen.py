@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.title('Medikament hinzufügen')
 
@@ -23,6 +24,10 @@ with st.form("add_medication_form"):
                 "Zeit": zeit,
                 "Weiteres": weiteres
             })
+            # Speichere die aktualisierte Liste auf der Switch Drive
+            data_manager = st.session_state.data_manager
+            med_df = pd.DataFrame(st.session_state.medikamente)
+            data_manager.save_user_data(med_df, 'medikamente.csv')
             st.success(f"Medikament '{name}' hinzugefügt!")
         else:
             st.error("Bitte einen Namen und eine gültige Dosis eingeben.")
