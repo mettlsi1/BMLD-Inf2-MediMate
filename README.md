@@ -5,6 +5,7 @@
 MediMate ist eine personalisierbare Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen.
 
 Link to the app:
+https://bmld-inf2-medimate-trackyourmedsright.streamlit.app
 
 ## Team
 
