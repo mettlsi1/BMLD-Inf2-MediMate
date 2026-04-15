@@ -11,7 +11,7 @@ with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
     dosis = st.number_input("Dosis (z. B. in mg)", min_value=0.0, step=0.1)
     zeit = st.selectbox("Einnahmezeit", ["Morgen", "Mittag", "Abend"])
-    weiteres = st.selectbox("Weiteres", ["Vor dem Essen", "Mit dem Essen", "Nach dem Essen", "keine"])
+    weiteres = st.selectbox("Weiteres", ["Vor dem Essen", "Mit dem Essen", "Nach dem Essen", "--"])
     
     submitted = st.form_submit_button("Hinzufügen")
     
