@@ -11,7 +11,7 @@ with col1:
     if st.button("Medikament hinzufügen"):
         st.switch_page("views/Medikament_hinzufuegen.py")
 
-st.subheader("Aufgenommene Medikamente")
+st.subheader("Deine Medikamente")
 
 if st.session_state.medikamente:
     df = pd.DataFrame(st.session_state.medikamente)
