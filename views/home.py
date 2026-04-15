@@ -1,6 +1,7 @@
 import streamlit as st
 
-st.title('MediMate - Dein Medikamenten-Tracker')
+st.title('MediMate')
+st.subheader("Dein Medikamenten-Tracker")
 
 st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu verfolgen, Erinnerungen zu setzen und Ihre Gesundheitsdaten zu visualisieren. Bitte melden Sie sich an oder registrieren Sie sich, um fortzufahren.")
 
