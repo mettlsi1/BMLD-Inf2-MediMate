@@ -1,14 +1,14 @@
 import streamlit as st
 
-st.title('MediMate')
-st.subheader("Dein Medikamenten-Tracker")
+st.title('Willkommen bei MediMate')
+st.subheader("Dein Medikamenten-Monitoring-Tool")
 
-st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu verfolgen, Erinnerungen zu setzen und Ihre Gesundheitsdaten zu visualisieren. Bitte melden Sie sich an oder registrieren Sie sich, um fortzufahren.")
+st.markdown("Die Anwendung ermöglicht es Ihnen, Ihre Medikamenteneinnahme zu verfolgen. Bitte melden Sie sich an oder registrieren Sie sich, um fortzufahren.")
 
 st.info("""Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
 
 # Neuen Button hier hinzufügen
-if st.button("Medikamente"):
+if st.button("Meine Medikamente"):
     st.switch_page("views/Medikamente.py")
 
 st.write("Diese App wurde von den folgenden Personen im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt:")
