@@ -12,7 +12,7 @@ with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
     col_dosis, col_einheit = st.columns([3, 2])
     with col_dosis:
-        dosis = st.number_input("Dosis", min_value=0.0, step=0.1)
+        dosis = st.number_input("Dosis", min_value=0.0, step=1.0)
     with col_einheit:
         einheit = st.radio("Einheit", ["mg", "Tabletten"], label_visibility="collapsed")
     zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"])
