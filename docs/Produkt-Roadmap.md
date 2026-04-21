@@ -6,27 +6,25 @@
 - Aufbau
 - Github-Freigabe für Gruppe
 
-## V1.0 Medikamententracking
+## V1.0 Medikamententracking (KW 17)
 
 - Aufbau der Homepage
 - Medikamenteneingabe und Übersicht programmieren
+- Datenspeicherung inkl. User Login
 
-## V2.0 Kalender
+## V2.0 Kalender (KW 18)
 
 - 7 Tage Kalender-page für Medikamentenübersicht programmieren
 - Grafische Darstellung des Kalenders
 
-## 3.0 Blutdruckeingabe
+## 3.0 Blutdruckeingaben (KW 19)
 
 - Programmierung der Blutrduckeingabe-page
 - Recherche Referenzwerte und Handlungsempfehlungen
 - Hinterlegung der Mitteilungen
 - Darstellung des grafischen Verlaufs
 
-## V4.0 Datenspeicherung
+## V4.0 Design (KW 20)
 
-- Während der Session
-
-## V5.0 Datenspeicherung inkl. User Login
-
-- mit Switch Drive
+- Schlussdesign verfeinern
+- Letzte Anpassungen
