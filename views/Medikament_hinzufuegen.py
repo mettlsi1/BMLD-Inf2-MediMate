@@ -21,7 +21,7 @@ with st.form("add_medication_form"):
             horizontal=True
     )
     zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"], horizontal=True)
-    weiteres = st.selectbox("Weiteres", ["Vor dem Essen", "Mit dem Essen", "Nach dem Essen", "--"])
+    weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
     
     submitted = st.form_submit_button("Hinzufügen")
     
