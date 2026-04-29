@@ -46,7 +46,7 @@ def organize_medications_by_day(medications):
 if st.session_state.medikamente:
     schedule = organize_medications_by_day(st.session_state.medikamente)
     
-    # Zeige die nächsten 7 Tage in einem benutzerdefinierten Layout
+    # Zeige die nächsten 7 Tage in einer Tabellenstruktur
     for i in range(7):
         current_date = datetime.now().date() + timedelta(days=i)
         
@@ -58,30 +58,30 @@ if st.session_state.medikamente:
         else:
             day_label = calendar.day_name[current_date.weekday()]
         
-        # Kopfzeile für jeden Tag
-        st.markdown(f"### {day_label} – {current_date.strftime('%d.%m.%Y')}")
-        
-        # Zeige die Medikamente für diese Tageszeiten
-        times_of_day = ["Morgen", "Mittag", "Abend"]
-        cols = st.columns(3)
-        
-        for idx, zeit in enumerate(times_of_day):
-            with cols[idx]:
-                meds = schedule[current_date][zeit]
-                
-                if meds:
+        # Container für jeden Tag mit Kästchen-Design
+        with st.container(border=True):
+            # Kopfzeile mit Datum
+            st.markdown(f"**{day_label} – {current_date.strftime('%d.%m.%Y')}**")
+            
+            # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
+            times_of_day = ["Morgen", "Mittag", "Abend"]
+            cols = st.columns(3)
+            
+            for idx, zeit in enumerate(times_of_day):
+                with cols[idx]:
+                    meds = schedule[current_date][zeit]
+                    
                     st.markdown(f"**{zeit}**")
-                    for med in meds:
-                        st.markdown(
-                            f"- **{med['Name']}**\n"
-                            f"  - Dosis: {med['Dosis']}\n"
-                            f"  - {med['Weiteres'] if med['Weiteres'] != '--' else ''}"
-                        )
-                else:
-                    st.markdown(f"**{zeit}**")
-                    st.markdown("*Keine Medikamente*")
-        
-        st.divider()
+                    
+                    if meds:
+                        for med in meds:
+                            st.markdown(
+                                f"🔷 **{med['Name']}**\n"
+                                f"└─ {med['Dosis']}\n"
+                                f"└─ {med['Weiteres'] if med['Weiteres'] != '--' else ''}"
+                            )
+                    else:
+                        st.markdown("*–*")
 
 else:
     st.info("📋 Noch keine Medikamente hinzugefügt. Bitte füge zunächst ein Medikament hinzu.")
