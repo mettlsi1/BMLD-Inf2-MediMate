@@ -27,10 +27,34 @@ with st.form("add_medication_form"):
     st.markdown("**Einnahmeintervall**")
     intervall_type = st.radio(
         "Wie oft soll das Medikament eingenommen werden?",
-        ["Täglich", "Alle X Tage", "Wöchentlich", "X Wöchentlich"],
+        ["Täglich", "Wöchentlich"],
         label_visibility="collapsed",
-        horizontal=False
+        horizontal=True
     )
+    
+    # Abhängig von der Auswahl weitere Eingabefelder
+    intervall_value = None
+    if intervall_type == "Täglich":
+        intervall_value = "täglich"
+    else:  # Wöchentlich
+        intervall_value = "wöchentlich"
+    
+    # Zusätzliche Optionen für Mehrfach-Intervalle
+    st.markdown("**oder**")
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col1:
+        alle_x_enabled = st.checkbox("Alle")
+    
+    if alle_x_enabled:
+        with col2:
+            x_value = st.number_input("", min_value=2, value=2, step=1, key="x_input")
+        with col3:
+            intervall_einheit = st.selectbox("", ["Tage", "Wochen"], key="einheit_select")
+        
+        if intervall_einheit == "Tage":
+            intervall_value = f"alle_{x_value}_tage"
+        else:
+            intervall_value = f"alle_{x_value}_wochen"
     
     submitted = st.form_submit_button("Hinzufügen")
     # Überprüfe die Eingaben und füge das Medikament zur Liste hinzu
@@ -54,3 +78,4 @@ with st.form("add_medication_form"):
 
 if st.button("Zurück zur Medikamentenliste"):
     st.switch_page("views/Medikamente.py")
+    
