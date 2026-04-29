@@ -23,6 +23,28 @@ with st.form("add_medication_form"):
     zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"], horizontal=True)
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
     
+    # Intervall-Auswahl
+    st.markdown("**Einnahmeintervall**")
+    intervall_type = st.radio(
+        "Wie oft soll das Medikament eingenommen werden?",
+        ["Täglich", "Alle X Tage", "Wöchentlich", "X Wöchentlich"],
+        label_visibility="collapsed",
+        horizontal=False
+    )
+    
+    # Abhängig von der Auswahl weitere Eingabefelder
+    intervall_value = None
+    if intervall_type == "Täglich":
+        intervall_value = "täglich"
+    elif intervall_type == "Alle X Tage":
+        intervall_value = st.number_input("Alle wie viele Tage?", min_value=2, value=2, step=1)
+        intervall_value = f"alle_{intervall_value}_tage"
+    elif intervall_type == "Wöchentlich":
+        intervall_value = "wöchentlich"
+    elif intervall_type == "X Wöchentlich":
+        intervall_value = st.number_input("Alle wie viele Wochen?", min_value=2, value=2, step=1)
+        intervall_value = f"alle_{intervall_value}_wochen"
+    
     submitted = st.form_submit_button("Hinzufügen")
     # Überprüfe die Eingaben und füge das Medikament zur Liste hinzu
     if submitted:
@@ -32,7 +54,8 @@ with st.form("add_medication_form"):
                 "Name": name.strip(),
                 "Dosis": dosis_str,
                 "Zeit": zeit,
-                "Weiteres": weiteres
+                "Weiteres": weiteres,
+                "Intervall": intervall_value
             })
             # Speichere die aktualisierte Liste auf der Switch Drive
             data_manager = st.session_state.data_manager
@@ -44,3 +67,4 @@ with st.form("add_medication_form"):
 
 if st.button("Zurück zur Medikamentenliste"):
     st.switch_page("views/Medikamente.py")
+    
