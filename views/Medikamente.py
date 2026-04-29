@@ -24,3 +24,8 @@ col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("Medikament hinzufügen"):
         st.switch_page("views/Medikament_hinzufuegen.py")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("📅 Zum Kalender"):
+        st.switch_page("views/Kalender.py")
