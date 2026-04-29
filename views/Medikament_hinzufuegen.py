@@ -32,19 +32,6 @@ with st.form("add_medication_form"):
         horizontal=False
     )
     
-    # Abhängig von der Auswahl weitere Eingabefelder
-    intervall_value = None
-    if intervall_type == "Täglich":
-        intervall_value = "täglich"
-    elif intervall_type == "Alle X Tage":
-        tage = st.number_input("Alle wie viele Tage?", min_value=2, value=2, step=1)
-        intervall_value = f"alle_{tage}_tage"
-    elif intervall_type == "Wöchentlich":
-        intervall_value = "wöchentlich"
-    elif intervall_type == "X Wöchentlich":
-        wochen = st.number_input("Alle wie viele Wochen?", min_value=2, value=2, step=1)
-        intervall_value = f"alle_{wochen}_wochen"
-    
     submitted = st.form_submit_button("Hinzufügen")
     # Überprüfe die Eingaben und füge das Medikament zur Liste hinzu
     if submitted:
@@ -67,4 +54,3 @@ with st.form("add_medication_form"):
 
 if st.button("Zurück zur Medikamentenliste"):
     st.switch_page("views/Medikamente.py")
-    
