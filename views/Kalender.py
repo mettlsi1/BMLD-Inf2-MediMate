@@ -15,6 +15,10 @@ if "medikamente" not in st.session_state:
     )
     st.session_state.medikamente = med_df.to_dict('records')
 
+# Initialisiere die taken_medications Liste, um eingenommene Medikamente zu speichern
+if "taken_medications" not in st.session_state:
+    st.session_state.taken_medications = []
+
 # Funktion zum Organisieren der Medikamente nach Tagen und Zeiten
 def organize_medications_by_day(medications):
     """
@@ -74,12 +78,33 @@ if st.session_state.medikamente:
                     st.markdown(f"**{zeit}**")
                     
                     if meds:
-                        for med in meds:
-                            st.markdown(
-                                f"🔷 **{med['Name']}**:\n"
-                                f" {med['Dosis']}\n"
-                                f" {med['Weiteres'] if med['Weiteres'] != '--' else ''}"
-                            )
+                        for med_idx, med in enumerate(meds):
+                            # Erstelle einen eindeutigen Schlüssel für jedes Medikament
+                            med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
+                            
+                            # Prüfe ob das Medikament bereits eingenommen wurde
+                            is_taken = med_key in st.session_state.taken_medications
+                            
+                            # Erstelle einen Button mit farblicher Kennzeichnung
+                            if is_taken:
+                                # Grüner Hintergrund für eingenommene Medikamente
+                                button_label = f"✅ {med['Name']}"
+                                button_key = f"btn_{med_key}"
+                                if st.button(button_label, key=button_key, use_container_width=True):
+                                    # Toggle: Entferne das Medikament aus der Liste
+                                    st.session_state.taken_medications.remove(med_key)
+                                    st.rerun()
+                            else:
+                                # Normaler Button für noch nicht eingenommene Medikamente
+                                button_label = f"🔷 {med['Name']}"
+                                button_key = f"btn_{med_key}"
+                                if st.button(button_label, key=button_key, use_container_width=True):
+                                    # Füge das Medikament zur Liste hinzu
+                                    st.session_state.taken_medications.append(med_key)
+                                    st.rerun()
+                            
+                            # Zeige Dosis und Weiteres als Text
+                            st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
                     else:
                         st.markdown("*–*")
 
