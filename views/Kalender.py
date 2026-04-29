@@ -47,6 +47,23 @@ if "medikamente" not in st.session_state:
 if "taken_medications" not in st.session_state:
     st.session_state.taken_medications = []
 
+# Funktion zur Überprüfung, ob alle Medikamente eines Tages eingenommen wurden
+def are_all_medications_taken_for_day(medications, current_date, taken_list):
+    """
+    Prüft, ob alle Medikamente eines bestimmten Tages eingenommen wurden.
+    """
+    all_meds_for_day = []
+    times_of_day = ["Morgen", "Mittag", "Abend"]
+    
+    for zeit in times_of_day:
+        for med_idx, med in enumerate(medications):
+            if med.get("Zeit") == zeit:
+                med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
+                all_meds_for_day.append(med_key)
+    
+    # Prüfe ob alle Medikamente des Tages in der taken_list sind
+    return len(all_meds_for_day) > 0 and all(med_key in taken_list for med_key in all_meds_for_day)
+
 # Funktion zum Organisieren der Medikamente nach Tagen und Zeiten
 def organize_medications_by_day(medications):
     """
@@ -133,8 +150,17 @@ if st.session_state.medikamente:
                             button_label = f"🔷 {med['Name']}"
                             button_key = f"btn_{med_key}"
                             if st.button(button_label, key=button_key, use_container_width=True):
+                                # Zeige eine kurze Erfolgsmeldung
+                                st.toast("🎉 Super gemacht!", icon="👏")
+                                
                                 # Füge das Medikament zur Liste hinzu
                                 st.session_state.taken_medications.append(med_key)
+                                
+                                # Prüfe ob alle Medikamente des Tages eingenommen wurden
+                                if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
+                                    # Zeige Feuerwerk für den letzten Medikament des Tages
+                                    st.balloons()
+                                
                                 st.rerun()
                         
                         # Zeige Dosis und Weiteres als Text
