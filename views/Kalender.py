@@ -154,35 +154,45 @@ if st.session_state.medikamente:
                         # Prüfe ob das Medikament bereits eingenommen wurde
                         is_taken = med_key in st.session_state.taken_medications
                         
-                        # Erstelle einen Button mit farblicher Kennzeichnung
-                        if is_taken:
-                            # Grüner Hintergrund für eingenommene Medikamente
-                            button_label = f"✅ {med['Name']}"
-                            button_key = f"btn_{med_key}"
-                            if st.button(button_label, key=button_key, use_container_width=True):
-                                # Toggle: Entferne das Medikament aus der Liste
-                                st.session_state.taken_medications.remove(med_key)
-                                st.rerun()
+                        # Nur für den heutigen Tag (i == 0) sind die Buttons anklickbar
+                        if i == 0:
+                            # Erstelle einen Button mit farblicher Kennzeichnung
+                            if is_taken:
+                                # Grüner Hintergrund für eingenommene Medikamente
+                                button_label = f"✅ {med['Name']}"
+                                button_key = f"btn_{med_key}"
+                                if st.button(button_label, key=button_key, use_container_width=True):
+                                    # Toggle: Entferne das Medikament aus der Liste
+                                    st.session_state.taken_medications.remove(med_key)
+                                    st.rerun()
+                            else:
+                                # Normaler Button für noch nicht eingenommene Medikamente
+                                button_label = f"🔷 {med['Name']}"
+                                button_key = f"btn_{med_key}"
+                                if st.button(button_label, key=button_key, use_container_width=True):
+                                    # Füge das Medikament zur Liste hinzu
+                                    st.session_state.taken_medications.append(med_key)
+                                    
+                                    # Setze das Flag für die Erfolgsmeldung
+                                    st.session_state.show_success = True
+                                    
+                                    # Prüfe ob alle Medikamente des Tages eingenommen wurden
+                                    if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
+                                        # Setze das Flag für Feuerwerk (Balloons)
+                                        st.session_state.show_balloons = True
+                                    
+                                    st.rerun()
+                            
+                            # Zeige Dosis und Weiteres als Text
+                            st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
                         else:
-                            # Normaler Button für noch nicht eingenommene Medikamente
-                            button_label = f"🔷 {med['Name']}"
-                            button_key = f"btn_{med_key}"
-                            if st.button(button_label, key=button_key, use_container_width=True):
-                                # Füge das Medikament zur Liste hinzu
-                                st.session_state.taken_medications.append(med_key)
-                                
-                                # Setze das Flag für die Erfolgsmeldung
-                                st.session_state.show_success = True
-                                
-                                # Prüfe ob alle Medikamente des Tages eingenommen wurden
-                                if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
-                                    # Setze das Flag für Feuerwerk (Balloons)
-                                    st.session_state.show_balloons = True
-                                
-                                st.rerun()
-                        
-                        # Zeige Dosis und Weiteres als Text
-                        st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
+                            # Für zukünftige Tage: Zeige statischen Text ohne Buttons
+                            if is_taken:
+                                st.markdown(f"✅ **{med['Name']}**")
+                            else:
+                                st.markdown(f"🔷 **{med['Name']}**")
+                            
+                            st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
                 else:
                     st.markdown("*–*")
         
