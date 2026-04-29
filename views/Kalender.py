@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 import calendar
+import time
 
 st.title('📅 Medikamentenkalender')
 st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
@@ -46,6 +47,23 @@ if "medikamente" not in st.session_state:
 # Initialisiere die taken_medications Liste, um eingenommene Medikamente zu speichern
 if "taken_medications" not in st.session_state:
     st.session_state.taken_medications = []
+
+# Initialisiere das Flag für die Erfolgsmeldung
+if "show_success" not in st.session_state:
+    st.session_state.show_success = False
+
+if "show_balloons" not in st.session_state:
+    st.session_state.show_balloons = False
+
+# Zeige die Erfolgsmeldung an, wenn das Flag gesetzt ist
+if st.session_state.show_success:
+    st.success("🎉 Super gemacht!")
+    st.session_state.show_success = False
+
+# Zeige Balloons, wenn das Flag gesetzt ist
+if st.session_state.show_balloons:
+    st.balloons()
+    st.session_state.show_balloons = False
 
 # Funktion zur Überprüfung, ob alle Medikamente eines Tages eingenommen wurden
 def are_all_medications_taken_for_day(medications, current_date, taken_list):
@@ -150,16 +168,16 @@ if st.session_state.medikamente:
                             button_label = f"🔷 {med['Name']}"
                             button_key = f"btn_{med_key}"
                             if st.button(button_label, key=button_key, use_container_width=True):
-                                # Zeige eine kurze Erfolgsmeldung
-                                st.toast("🎉 Super gemacht!", icon="👏")
-                                
                                 # Füge das Medikament zur Liste hinzu
                                 st.session_state.taken_medications.append(med_key)
                                 
+                                # Setze das Flag für die Erfolgsmeldung
+                                st.session_state.show_success = True
+                                
                                 # Prüfe ob alle Medikamente des Tages eingenommen wurden
                                 if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
-                                    # Zeige Feuerwerk für den letzten Medikament des Tages
-                                    st.balloons()
+                                    # Setze das Flag für Feuerwerk (Balloons)
+                                    st.session_state.show_balloons = True
                                 
                                 st.rerun()
                         
