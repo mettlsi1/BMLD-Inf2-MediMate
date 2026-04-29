@@ -37,24 +37,12 @@ with st.form("add_medication_form"):
     if intervall_type == "Täglich":
         intervall_value = "täglich"
     elif intervall_type == "Alle X Tage":
-        col1, col2, col3 = st.columns([1, 1, 2])
-        with col1:
-            st.markdown("**Alle**")
-        with col2:
-            tage = st.number_input("Tage", min_value=2, value=2, step=1, key="tage_input")
-        with col3:
-            st.markdown("**Tage**")
+        tage = st.number_input("Alle wie viele Tage?", min_value=2, value=2, step=1)
         intervall_value = f"alle_{tage}_tage"
     elif intervall_type == "Wöchentlich":
         intervall_value = "wöchentlich"
     elif intervall_type == "X Wöchentlich":
-        col1, col2, col3 = st.columns([1, 1, 2])
-        with col1:
-            st.markdown("Alle")
-        with col2:
-            wochen = st.number_input("Wochen", min_value=2, value=2, step=1, key="wochen_input")
-        with col3:
-            st.markdown("**Wöchentlich**")
+        wochen = st.number_input("Alle wie viele Wochen?", min_value=2, value=2, step=1)
         intervall_value = f"alle_{wochen}_wochen"
     
     submitted = st.form_submit_button("Hinzufügen")
