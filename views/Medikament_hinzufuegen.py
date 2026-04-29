@@ -27,25 +27,21 @@ with st.form("add_medication_form"):
     st.markdown("**Einnahmeintervall**")
     intervall_type = st.radio(
         "Wie oft soll das Medikament eingenommen werden?",
-        ["Täglich", "Wöchentlich"],
+        ["Täglich", "Wöchentlich", "Alle"],
         label_visibility="collapsed",
-        horizontal=True
+        horizontal=False
     )
     
     # Abhängig von der Auswahl weitere Eingabefelder
     intervall_value = None
     if intervall_type == "Täglich":
         intervall_value = "täglich"
-    else:  # Wöchentlich
+    elif intervall_type == "Wöchentlich":
         intervall_value = "wöchentlich"
-    
-    # Zusätzliche Optionen für Mehrfach-Intervalle
-    st.markdown("**oder**")
-    col1, col2, col3 = st.columns([1, 1, 1])
-    with col1:
-        alle_x_enabled = st.checkbox("Alle")
-    
-    if alle_x_enabled:
+    elif intervall_type == "Alle":
+        col1, col2, col3 = st.columns([1, 1, 1])
+        with col1:
+            st.markdown("**Alle**")
         with col2:
             x_value = st.number_input("", min_value=2, value=2, step=1, key="x_input")
         with col3:
