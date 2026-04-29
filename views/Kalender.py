@@ -76,7 +76,7 @@ if st.session_state.medikamente:
                     if meds:
                         for med in meds:
                             st.markdown(
-                                f"🔷 **{med['Name']}**\n:"
+                                f"🔷 **{med['Name']}**:\n"
                                 f" {med['Dosis']}\n"
                                 f" {med['Weiteres'] if med['Weiteres'] != '--' else ''}"
                             )
