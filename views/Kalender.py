@@ -111,16 +111,16 @@ if st.session_state.medikamente:
     """, unsafe_allow_html=True)
     
     # Zeige die nächsten 7 Tage in einer Tabellenstruktur
-for i in range(7):
-    current_date = datetime.now().date() + timedelta(days=i)
+    for i in range(7):
+        current_date = datetime.now().date() + timedelta(days=i)
     
     # Formatiere das Datum schön
-    if i == 0:
-        day_label = "🟢 Heute"
-    elif i == 1:
-        day_label = "🟡 Morgen"
-    else:
-        day_label = calendar.day_name[current_date.weekday()]
+        if i == 0:
+            day_label = "🟢 Heute"
+        elif i == 1:
+            day_label = "🟡 Morgen"
+        else:
+            day_label = calendar.day_name[current_date.weekday()]
     
     # Starte den graublau gefärbten Container
     with st.container():
