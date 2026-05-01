@@ -88,6 +88,10 @@ if st.session_state.medikamente:
     # Zeige die nächsten 7 Tage in einer Tabellenstruktur
     for i in range(7):
         current_date = datetime.now().date() + timedelta(days=i)
+
+        # Trennlinie vor jedem Tag (außer dem ersten)
+        if i > 0:
+            st.markdown("------------------------------------------------------")
         
         # Formatiere das Datum schön
         if i == 0:
@@ -101,9 +105,6 @@ if st.session_state.medikamente:
         with st.container():
             st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
 
-        if i < 6:
-            st.markdown("----------------------------------------------------------------------")
-                
             # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
             times_of_day = ["Morgen", "Mittag", "Abend"]
             cols = st.columns(3)
