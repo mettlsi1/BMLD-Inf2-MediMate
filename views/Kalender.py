@@ -7,26 +7,6 @@ import time
 st.title('📅 Medikamentenkalender')
 st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
 
-# Custom CSS für graublau Kästchen
-st.markdown("""
-<style>
-    .calendar-wrapper div[data-testid="stVerticalBlock"] {
-        background-color: #E8EFF5 !important;
-        border: 3px solid #6B8E99 !important;
-        border-radius: 10px;
-        padding: 15px;
-        margin: 12px 0;
-    }
-
-    .calendar-wrapper div[data-testid="stVerticalBlock"] h4 {
-        margin-top: 0;
-        margin-bottom: 15px;
-        color: #2C3E50;
-        font-size: 18px;
-    }
-</style>
-""", unsafe_allow_html=True)
-
 # Lade Medikamente aus der Session State
 if "medikamente" not in st.session_state:
     data_manager = st.session_state.data_manager
@@ -104,11 +84,7 @@ def organize_medications_by_day(medications):
 # Organisiere die Medikamente
 if st.session_state.medikamente:
     schedule = organize_medications_by_day(st.session_state.medikamente)
-    
-    # Starte den Wrapper für die ganze Tabelle
-    st.markdown("""
-    <div class="calendar-wrapper">
-    """, unsafe_allow_html=True)
+
     
     # Zeige die nächsten 7 Tage in einer Tabellenstruktur
     for i in range(7):
@@ -187,9 +163,6 @@ if st.session_state.medikamente:
                         st.markdown("*–*")
         
         st.markdown("")  # Abstand zwischen den Containern
-    
-    # Beende den Wrapper für die ganze Tabelle
-    st.markdown("</div>", unsafe_allow_html=True)
 
 else:
     st.info("📋 Noch keine Medikamente hinzugefügt. Bitte füge zunächst ein Medikament hinzu.")
