@@ -113,36 +113,83 @@ if st.session_state.medikamente:
     # Zeige die nächsten 7 Tage in einer Tabellenstruktur
     for i in range(7):
         current_date = datetime.now().date() + timedelta(days=i)
-    
-    # Formatiere das Datum schön
+        
+        # Formatiere das Datum schön
         if i == 0:
             day_label = "🟢 Heute"
         elif i == 1:
             day_label = "🟡 Morgen"
         else:
             day_label = calendar.day_name[current_date.weekday()]
-    
-    # Starte den graublau gefärbten Container
+        
+        # Starte den graublau gefärbten Container
         with st.container():
             st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
-        
-        # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
+            
+            # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
             times_of_day = ["Morgen", "Mittag", "Abend"]
             cols = st.columns(3)
-        
+            
             for idx, zeit in enumerate(times_of_day):
                 with cols[idx]:
                     meds = schedule[current_date][zeit]
-                
+                    
                     st.markdown(f"**{zeit}**")
-                
+                    
                     if meds:
                         for med_idx, med in enumerate(meds):
-                        # ... (restlicher Code für die Medikamente bleibt unverändert)
+                            # Erstelle einen eindeutigen Schlüssel für jedes Medikament
+                            med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
+                            
+                            # Prüfe ob das Medikament bereits eingenommen wurde
+                            is_taken = med_key in st.session_state.taken_medications
+                            
+                            # Nur für den heutigen Tag (i == 0) sind die Buttons anklickbar
+                            if i == 0:
+                                # Erstelle einen Button mit farblicher Kennzeichnung
+                                if is_taken:
+                                    # Grüner Hintergrund für eingenommene Medikamente
+                                    button_label = f"✅ {med['Name']}"
+                                    button_key = f"btn_{med_key}"
+                                    if st.button(button_label, key=button_key, use_container_width=True):
+                                        # Toggle: Entferne das Medikament aus der Liste
+                                        st.session_state.taken_medications.remove(med_key)
+                                        st.rerun()
+                                else:
+                                    # Normaler Button für noch nicht eingenommene Medikamente
+                                    button_label = f"🔷 {med['Name']}"
+                                    button_key = f"btn_{med_key}"
+                                    if st.button(button_label, key=button_key, use_container_width=True):
+                                        # Füge das Medikament zur Liste hinzu
+                                        st.session_state.taken_medications.append(med_key)
+                                        
+                                        # Setze das Flag für die Erfolgsmeldung
+                                        st.session_state.show_success = True
+                                        
+                                        # Prüfe ob alle Medikamente des Tages eingenommen wurden
+                                        if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
+                                            # Setze das Flag für Feuerwerk (Balloons)
+                                            st.session_state.show_balloons = True
+                                        
+                                        st.rerun()
+                                
+                                # Zeige Dosis und Weiteres als Text
+                                st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
+                            else:
+                                # Für zukünftige Tage: Zeige statischen Text ohne Buttons
+                                if is_taken:
+                                    st.markdown(f"✅ **{med['Name']}**")
+                                else:
+                                    st.markdown(f"🔷 **{med['Name']}**")
+                                
+                                st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
                     else:
                         st.markdown("*–*")
+        
+        st.markdown("")  # Abstand zwischen den Containern
     
-    st.markdown("")  # Abstand zwischen den Containern
+    # Beende den Wrapper für die ganze Tabelle
+    st.markdown("</div>", unsafe_allow_html=True)
 
 else:
     st.info("📋 Noch keine Medikamente hinzugefügt. Bitte füge zunächst ein Medikament hinzu.")
