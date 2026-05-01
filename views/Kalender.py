@@ -10,14 +10,6 @@ st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
 # Custom CSS für graublau Kästchen
 st.markdown("""
 <style>
-    .calendar-wrapper {
-        background-color: #A8BEC9;
-        border: 3px solid #5A7A8F;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 15px 0;
-    }
-    
     .day-container {
         background-color: #E8EFF5;
         border: 3px solid #6B8E99;
