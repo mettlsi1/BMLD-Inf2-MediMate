@@ -96,6 +96,10 @@ if st.session_state.medikamente:
             day_label = "🟡 Morgen"
         else:
             day_label = calendar.day_name[current_date.weekday()]
+        
+        # Starte den graublau gefärbten Container
+        with st.container():
+            st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
             
             # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
             times_of_day = ["Morgen", "Mittag", "Abend"]
