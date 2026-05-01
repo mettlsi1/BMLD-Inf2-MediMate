@@ -123,24 +123,24 @@ if st.session_state.medikamente:
             day_label = calendar.day_name[current_date.weekday()]
     
     # Starte den graublau gefärbten Container
-    with st.container():
-        st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
+        with st.container():
+            st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
         
         # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
-        times_of_day = ["Morgen", "Mittag", "Abend"]
-        cols = st.columns(3)
+            times_of_day = ["Morgen", "Mittag", "Abend"]
+            cols = st.columns(3)
         
-        for idx, zeit in enumerate(times_of_day):
-            with cols[idx]:
-                meds = schedule[current_date][zeit]
+            for idx, zeit in enumerate(times_of_day):
+                with cols[idx]:
+                    meds = schedule[current_date][zeit]
                 
-                st.markdown(f"**{zeit}**")
+                    st.markdown(f"**{zeit}**")
                 
-                if meds:
-                    for med_idx, med in enumerate(meds):
+                    if meds:
+                        for med_idx, med in enumerate(meds):
                         # ... (restlicher Code für die Medikamente bleibt unverändert)
-                else:
-                    st.markdown("*–*")
+                    else:
+                        st.markdown("*–*")
     
     st.markdown("")  # Abstand zwischen den Containern
 
