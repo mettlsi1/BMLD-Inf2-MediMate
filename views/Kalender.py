@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime, timedelta
 import calendar
-import time
 
 st.title('📅 Medikamentenkalender')
 st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
@@ -97,10 +96,6 @@ if st.session_state.medikamente:
             day_label = "🟡 Morgen"
         else:
             day_label = calendar.day_name[current_date.weekday()]
-        
-        # Starte den graublau gefärbten Container
-        with st.container():
-            st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
             
             # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
             times_of_day = ["Morgen", "Mittag", "Abend"]
@@ -161,8 +156,6 @@ if st.session_state.medikamente:
                                 st.caption(f"{med['Dosis']}" + (f" • {med['Weiteres']}" if med['Weiteres'] != '--' else ""))
                     else:
                         st.markdown("*–*")
-        
-        st.markdown("")  # Abstand zwischen den Containern
 
 else:
     st.info("📋 Noch keine Medikamente hinzugefügt. Bitte füge zunächst ein Medikament hinzu.")
