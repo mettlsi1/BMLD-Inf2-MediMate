@@ -23,11 +23,10 @@ def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
 def validate_medikament_input(name, dosis):
     return name.strip() != "" and dosis != ""
 
-def save_medikament(name, dosis, einheit, zeit, weiteres, intervall_value):
-    dosis_str = f"{dosis} {einheit}"
+def save_medikament(name, dosis, zeit, weiteres, intervall_value):
     st.session_state.medikamente.append({
         "Name": name.strip(),
-        "Dosis": dosis_str,
+        "Dosis": dosis,
         "Zeit": zeit,
         "Weiteres": weiteres,
         "Intervall": intervall_value

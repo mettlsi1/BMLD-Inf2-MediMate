@@ -55,7 +55,7 @@ with st.form("add_medication_form"):
     if submitted:
         if validate_medikament_input(name, dosis):
             intervall_value = get_intervall_value(intervall_type, x_value, intervall_einheit)
-            save_medikament(name, dosis, einheit, zeit, weiteres, intervall_value)
+            save_medikament(name, dosis, zeit, weiteres, intervall_value)
             st.success(f"Medikament '{name}' hinzugefügt!")
         else:
             st.error("Bitte einen Namen und eine gültige Dosis eingeben.")
