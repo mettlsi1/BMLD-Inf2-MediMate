@@ -5,12 +5,16 @@ st.subheader("Dein Medikamenten-Monitoring-Tool")
 
 st.info("""Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.""")
 
-# Button für Medikamentenpage
-if st.button("Meine Medikamente"):
-    st.switch_page("views/Medikamente.py")
+# Buttons für Medikamentenpage und Kalenderpage
+col1, col2 = st.columns(2)
 
-if st.button("Kalender"):
-    st.switch_page("views/Kalender.py")
+with col1:
+    if st.button("Meine Medikamente"):
+        st.switch_page("views/Medikamente.py")
+
+with col2:
+    if st.button("Kalender"):
+        st.switch_page("views/Kalender.py")
 
 st.write("Diese App wurde von den folgenden Personen im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt:")
 st.write("- Jessica Schmid (schmij30@students.zhaw.ch)")
