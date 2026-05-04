@@ -24,6 +24,8 @@ initialize_medikamente_state(st.session_state.data_manager)
 
 st.markdown("Bitte fülle die folgenden Felder aus, um ein neues Medikament zu speichern.")
 
+zeit = get_einnahmezeit()  # Außerhalb des Formulars, damit sofort interaktiv
+
 with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
     col_tabletten, col_mg = st.columns(2)
@@ -39,8 +41,6 @@ with st.form("add_medication_form"):
         dosis = f"{mg} mg"
     else:
         dosis = ""    
-    
-    zeit = get_einnahmezeit()  # Ersetzt die gesamte Uhrzeit-Logik
 
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
 
