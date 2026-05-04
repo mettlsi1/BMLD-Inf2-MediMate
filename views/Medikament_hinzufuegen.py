@@ -33,9 +33,13 @@ with st.form("add_medication_form"):
 
     zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
     
-    if zeit == "Uhrzeit":
+    zeit_option = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
+
+    if zeit_option == "Uhrzeit":
         uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0))
         zeit = uhrzeit.strftime("%H:%M")
+    else:
+        zeit = zeit_option
 
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
 
