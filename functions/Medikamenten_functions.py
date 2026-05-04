@@ -35,4 +35,4 @@ def save_medikament(name, dosis, zeit, weiteres, intervall_value):
     data_manager = st.session_state.data_manager
     med_df = pd.DataFrame(st.session_state.medikamente)
     data_manager.save_user_data(med_df, 'medikamente.csv')
-    return dosis_str
+    return dosis
