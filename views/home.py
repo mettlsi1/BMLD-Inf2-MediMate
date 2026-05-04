@@ -13,7 +13,7 @@ with col1:
         st.switch_page("views/Medikamente.py")
 
 with col2:
-    if st.button("📅 Kalender"):
+    if st.button("📅 Mein Kalender"):
         st.switch_page("views/Kalender.py")
 
 st.write("Diese App wurde von den folgenden Personen im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt:")
