@@ -30,8 +30,6 @@ with st.form("add_medication_form"):
         dosis = f"{mg} mg"
     else:
         dosis = ""    
-
-    zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
     
     zeit_option = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
 
