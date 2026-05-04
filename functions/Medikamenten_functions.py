@@ -14,7 +14,7 @@ def get_einnahmezeit():
     zeit_option = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
     
     if zeit_option == "Uhrzeit":
-        uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0))
+        uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0), key="uhrzeit_input")
         return uhrzeit.strftime("%H:%M")
     else:
         return zeit_option
