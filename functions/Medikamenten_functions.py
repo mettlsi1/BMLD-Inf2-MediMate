@@ -21,7 +21,7 @@ def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
     return None
 
 def validate_medikament_input(name, dosis):
-    return name.strip() != "" and dosis > 0
+    return name.strip() != "" and dosis != ""
 
 def save_medikament(name, dosis, einheit, zeit, weiteres, intervall_value):
     dosis_str = f"{dosis} {einheit}"

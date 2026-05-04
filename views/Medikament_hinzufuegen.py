@@ -15,16 +15,19 @@ st.markdown("Bitte fülle die folgenden Felder aus, um ein neues Medikament zu s
 
 with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
-    col_dosis, col_einheit = st.columns([3, 2])
-    with col_dosis:
-        dosis = st.number_input("Dosis", min_value=0, step=1)
-    with col_einheit:
-        einheit = st.radio(
-            "Einheit",
-            ["mg", "Tabletten"],
-            label_visibility="collapsed",
-            horizontal=True
-        )
+    col_tabletten, col_mg = st.columns(2)
+    with col_tabletten:
+        tabletten = st.number_input("Anzahl Tabletten", min_value=0, step=1, value=0)
+    with col_mg:
+        mg = st.number_input("mg", min_value=0, step=1, value=0)
+    if tabletten > 0 and mg > 0:
+        dosis = f"{tabletten} Tabletten ({mg} mg)"
+    elif tabletten > 0:
+        dosis = f"{tabletten} Tabletten"
+    elif mg > 0:
+        dosis = f"{mg} mg"
+    else:
+        dosis = ""    
 
     zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"], horizontal=True)
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
