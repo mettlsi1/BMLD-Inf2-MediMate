@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import datetime
 
 def initialize_medikamente_state(data_manager):
     if "medikamente" not in st.session_state:
@@ -8,6 +9,15 @@ def initialize_medikamente_state(data_manager):
             initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres", "Intervall"])
         )
         st.session_state.medikamente = med_df.to_dict('records')
+
+def get_einnahmezeit():
+    zeit_option = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
+    
+    if zeit_option == "Uhrzeit":
+        uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0))
+        return uhrzeit.strftime("%H:%M")
+    else:
+        return zeit_option
 
 def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
     if intervall_type == "Täglich":
