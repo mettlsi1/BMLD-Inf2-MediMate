@@ -34,7 +34,8 @@ if st.session_state.medikamente:
         elif i == 1:
             day_label = "🟡 Morgen"
         else:
-            day_label = calendar.day_name[current_date.weekday()]
+            deutsche_wochentage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+            day_label = deutsche_wochentage[current_date.weekday()]
         
         # Starte den graublau gefärbten Container
         with st.container():
