@@ -1,3 +1,5 @@
+import datetime
+
 import streamlit as st
 from functions.Medikamenten_functions import (
     initialize_medikamente_state,
@@ -29,7 +31,12 @@ with st.form("add_medication_form"):
     else:
         dosis = ""    
 
-    zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend"], horizontal=True)
+    zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
+    
+    if zeit == "Uhrzeit":
+        uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0))
+        zeit = uhrzeit.strftime("%H:%M")
+
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
 
     st.markdown("**Einnahmeintervall**")
