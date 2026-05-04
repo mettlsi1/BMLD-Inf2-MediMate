@@ -14,7 +14,10 @@ initialize_medikamente_state(st.session_state.data_manager)
 
 st.markdown("Bitte fülle die folgenden Felder aus, um ein neues Medikament zu speichern.")
 
-zeit = get_einnahmezeit()  # Außerhalb des Formulars, damit sofort interaktiv
+zeit = st.radio("Einnahmezeit", ["Morgen", "Mittag", "Abend", "Uhrzeit"], horizontal=True)
+if zeit == "Uhrzeit":
+    uhrzeit = st.time_input("Wähle eine Uhrzeit", value=datetime.time(8, 0), key="uhrzeit_input")
+    zeit = uhrzeit.strftime("%H:%M")
 
 with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
