@@ -43,12 +43,10 @@ with st.form("add_medication_form"):
     x_value = 2
     intervall_einheit = "Tage"
 
-    col1, col2, col3 = st.columns([1, 1, 1])
+    col1, col2 = st.columns([1, 1])
     with col1:
-        st.markdown("**Alle**")
-    with col2:
         x_value = st.number_input("", min_value=2, value=2, step=1, key="x_input")
-    with col3:
+    with col2:
         intervall_einheit = st.selectbox("", ["Tage", "Wochen"], key="einheit_select")
 
     submitted = st.form_submit_button("Hinzufügen")
