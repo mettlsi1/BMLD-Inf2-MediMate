@@ -50,5 +50,13 @@ with st.form("add_blood_pressure_form"):
         else:
             st.error("Bitte gültige Werte eingeben.")
 
+if st.session_state.blutdruck:
+    st.markdown("### Gespeicherte Blutdruckwerte")
+    bp_df = pd.DataFrame(st.session_state.blutdruck)
+    bp_df.index = bp_df.index + 1
+    st.dataframe(bp_df)
+else:
+    st.info("Noch keine Blutdruckwerte gespeichert.")
+
 if st.button("Zurück zur Startseite"):
     st.switch_page("views/home.py")
