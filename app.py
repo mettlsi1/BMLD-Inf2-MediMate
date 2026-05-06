@@ -28,6 +28,13 @@ pg_second = st.Page("views/Medikamente.py", title="Medikamente", icon="💊")
 pg_add = st.Page("views/Medikament_hinzufuegen.py", title="Medikament hinzufügen", icon="➕")
 pg_calendar = st.Page("views/Kalender.py", title="Kalender", icon="📅")
 pg_Blutdruckeingabe = st.Page("views/Blutdruckeingabe.py", title="Blutdruck eingeben", icon="🩸")
+pg_bloodchart = st.Page("views/Blutdruckgrafik.py", title="Blutdruckgrafik", icon="📈")
 
-pg = st.navigation([pg_home, pg_second, pg_add, pg_calendar, pg_Blutdruckeingabe])
-pg.run()
+pg = st.navigation([
+    pg_home,
+    pg_second,
+    pg_add,
+    pg_calendar,
+    pg_Blutdruckeingabe,
+    pg_bloodchart
+])

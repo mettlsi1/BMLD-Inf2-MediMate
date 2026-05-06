@@ -59,5 +59,8 @@ if st.session_state.blutdruck:
 else:
     st.info("Noch keine Blutdruckwerte gespeichert.")
 
+if st.button("Zur Blutdruckgrafik"):
+    st.switch_page("views/Blutdruckgrafik.py")
+
 if st.button("Zurück zur Startseite"):
     st.switch_page("views/home.py")
