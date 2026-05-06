@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from functions.Blutdruckeingabe_functions import (
     initialize_blutdruck_state,
     validate_blutdruck_input,
