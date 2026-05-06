@@ -15,15 +15,30 @@ def validate_blutdruck_input(systolisch, diastolisch, pws):
 
 def check_kritical_values(systolisch, diastolisch, pws):
     """
-    Prüft, ob die Blutdruckwerte kritisch sind.
+    Prüft, ob die Blutdruckwerte kritisch sind (nur bei schwerem Bluthochdruck).
     Rückgabe: True wenn kritisch, False wenn normal
     """
-    # Kritische Bereiche festlegen
-    kritisch_systolisch = systolisch < 90 or systolisch > 180
-    kritisch_diastolisch = diastolisch < 60 or diastolisch > 110
-    kritisch_puls = pws < 50 or pws > 100
-    
-    return kritisch_systolisch or kritisch_diastolisch or kritisch_puls
+    return systolisch >= 180 or diastolisch >= 110
+
+def classify_blood_pressure(systolisch, diastolisch):
+    """
+    Klassifiziert den Blutdruck basierend auf WHO-Richtlinien.
+    Rückgabe: String mit der Kategorie
+    """
+    if systolisch < 120 and diastolisch < 80:
+        return "Optimaler Blutdruck"
+    elif 120 <= systolisch <= 129 and 80 <= diastolisch <= 84:
+        return "Normaler Blutdruck"
+    elif 130 <= systolisch <= 138 and 85 <= diastolisch <= 89:
+        return "Hochnormaler Blutdruck"
+    elif 140 <= systolisch <= 159 and 90 <= diastolisch <= 99:
+        return "Leichter Bluthochdruck"
+    elif 160 <= systolisch <= 179 and 100 <= diastolisch <= 109:
+        return "Mäßiger Bluthochdruck"
+    elif systolisch >= 180 or diastolisch >= 110:
+        return "Schwerer Bluthochdruck"
+    else:
+        return "Unklassifiziert"
 
 def save_blutdruck(systolisch, diastolisch, pws):
     st.session_state.blutdruck.append({

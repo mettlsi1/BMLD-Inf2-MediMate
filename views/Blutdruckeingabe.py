@@ -4,7 +4,8 @@ from functions.Blutdruckeingabe_functions import (
     initialize_blutdruck_state,
     validate_blutdruck_input,
     save_blutdruck,
-    check_kritical_values  # NEU
+    check_kritical_values,
+    classify_blood_pressure  # NEU
 )
 
 st.title('Blutdruckeingabe')
@@ -51,7 +52,11 @@ with st.form("add_blood_pressure_form"):
 if submitted:
     if validate_blutdruck_input(systolisch, diastolisch, pws):
         save_blutdruck(systolisch, diastolisch, pws)
+        
+        # Klassifiziere den Blutdruck
+        category = classify_blood_pressure(systolisch, diastolisch)
         st.success(f"Blutdruckwerte gespeichert: {systolisch}/{diastolisch} mmHg, Puls: {pws}")
+        st.info(f"**Kategorie:** {category}")
         
         # Prüfe auf kritische Werte
         if check_kritical_values(systolisch, diastolisch, pws):
