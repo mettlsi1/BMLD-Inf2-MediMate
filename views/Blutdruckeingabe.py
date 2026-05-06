@@ -3,7 +3,8 @@ import pandas as pd
 from functions.Blutdruckeingabe_functions import (
     initialize_blutdruck_state,
     validate_blutdruck_input,
-    save_blutdruck
+    save_blutdruck,
+    check_kritical_values  # NEU
 )
 
 st.title('Blutdruck eingabe')
@@ -19,7 +20,7 @@ with st.form("add_blood_pressure_form"):
     with col1:
         systolisch = st.number_input(
             "Systolischer Blutdruck (mmHg)",
-            min_value=70,
+            min_value=0,
             max_value=250,
             value=120,
             step=1
@@ -28,8 +29,8 @@ with st.form("add_blood_pressure_form"):
     with col2:
         diastolisch = st.number_input(
             "Diastolischer Blutdruck (mmHg)",
-            min_value=40,
-            max_value=150,
+            min_value=0,
+            max_value=250,
             value=80,
             step=1
         )
@@ -44,12 +45,16 @@ with st.form("add_blood_pressure_form"):
         )
     
     submitted = st.form_submit_button("Speichern")
-    if submitted:
-        if validate_blutdruck_input(systolisch, diastolisch, pws):
-            save_blutdruck(systolisch, diastolisch, pws)
-            st.success(f"Blutdruckwerte gespeichert: {systolisch}/{diastolisch} mmHg, Puls: {pws}")
-        else:
-            st.error("Bitte gültige Werte eingeben.")
+if submitted:
+    if validate_blutdruck_input(systolisch, diastolisch, pws):
+        save_blutdruck(systolisch, diastolisch, pws)
+        st.success(f"Blutdruckwerte gespeichert: {systolisch}/{diastolisch} mmHg, Puls: {pws}")
+        
+        # Prüfe auf kritische Werte
+        if check_kritical_values(systolisch, diastolisch, pws):
+            st.warning("⚠️ Diese Werte liegen in einem kritischen Bereich. Bitte wiederholen Sie die Messung. Sollte der Wert im gleichen Bereich bleiben, kontaktieren Sie einen Notarzt.")
+    else:
+        st.error("Bitte gültige Werte eingeben.")
 
 if st.session_state.blutdruck:
     st.markdown("### Gespeicherte Blutdruckwerte")

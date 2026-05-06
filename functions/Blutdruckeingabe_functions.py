@@ -13,6 +13,18 @@ def initialize_blutdruck_state(data_manager):
 def validate_blutdruck_input(systolisch, diastolisch, pws):
     return systolisch > 0 and diastolisch > 0 and pws > 0
 
+def check_kritical_values(systolisch, diastolisch, pws):
+    """
+    Prüft, ob die Blutdruckwerte kritisch sind.
+    Rückgabe: True wenn kritisch, False wenn normal
+    """
+    # Kritische Bereiche festlegen
+    kritisch_systolisch = systolisch < 90 or systolisch > 180
+    kritisch_diastolisch = diastolisch < 60 or diastolisch > 110
+    kritisch_puls = pws < 50 or pws > 100
+    
+    return kritisch_systolisch or kritisch_diastolisch or kritisch_puls
+
 def save_blutdruck(systolisch, diastolisch, pws):
     st.session_state.blutdruck.append({
         "Datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
