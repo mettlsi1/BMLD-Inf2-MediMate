@@ -52,7 +52,7 @@ if submitted:
         
         # Prüfe auf kritische Werte
         if check_kritical_values(systolisch, diastolisch, pws):
-            st.warning("⚠️ Diese Werte befinden sich in einem kritischen Bereich. Bitte wiederholen Sie die Messung. Falls der Wert weiterhin in diesem Bereich liegt, wenden Sie sich umgehend an einen Notarzt.(Tel: 114)")
+            st.warning("⚠️ Diese Werte befinden sich in einem kritischen Bereich. Bitte wiederholen Sie die Messung. Falls der Wert weiterhin in diesem Bereich liegt, wenden Sie sich umgehend an einen Notarzt. (Tel: 114)")
     else:
         st.error("Bitte gültige Werte eingeben.")
 
