@@ -33,7 +33,7 @@ def show_success_message():
         st.balloons()
         st.session_state.show_balloons = False
 
-def are_all_medications_taken_for_day(medications, current_date, taken_list):
+def are_all_medications_taken_for_day(medications, {current_date}, taken_list):
     """Prüft, ob alle Medikamente eines bestimmten Tages eingenommen wurden."""
     all_meds_for_day = []
     
@@ -52,16 +52,15 @@ def organize_medications_by_day(medications):
     
     for i in range(7):
         current_date = today + timedelta(days=i)
-        schedule[current_date] = {
-            "Morgen": [],
-            "Mittag": [],
-            "Abend": []
-        }
+        schedule[current_date] = {}
     
     for med in medications:
         zeit = med.get("Zeit", "Morgen")
         for i in range(7):
             current_date = today + timedelta(days=i)
+            # Wenn dieser Zeit-Schlüssel noch nicht existiert, erstelle ihn
+            if zeit not in schedule[current_date]:
+                schedule[current_date][zeit] = []
             schedule[current_date][zeit].append(med)
     
     return schedule
