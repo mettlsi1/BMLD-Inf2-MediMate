@@ -7,7 +7,10 @@ from functions.Blutdruckeingabe_functions import (
     check_kritical_values  # NEU
 )
 
-st.title('Blutdruck eingabe')
+st.title('Blutdruckeingabe')
+
+# Zeige das Bild der korrekten Messhaltung
+st.image("images/blutdruckmessung.png", use_container_width=True, caption="Korrekte Messposition für Blutdruckmessung")
 
 # Initialisiere die Blutdruckliste in der Session
 initialize_blutdruck_state(st.session_state.data_manager)
