@@ -27,6 +27,7 @@ pg_home = st.Page("views/home.py", title="Home", icon=":material/home:", default
 pg_second = st.Page("views/Medikamente.py", title="Medikamente", icon="💊")
 pg_add = st.Page("views/Medikament_hinzufuegen.py", title="Medikament hinzufügen", icon="➕")
 pg_calendar = st.Page("views/Kalender.py", title="Kalender", icon="📅")
+pg_Blutdruckeingabe = st.Page("views/Blutdruckeingabe.py", title="Blutdruck eingeben", icon="🩸")
 
 pg = st.navigation([pg_home, pg_second, pg_add, pg_calendar])
 pg.run()
