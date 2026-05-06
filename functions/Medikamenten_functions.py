@@ -11,12 +11,7 @@ def initialize_medikamente_state(data_manager):
         st.session_state.medikamente = med_df.to_dict('records')
 
 def get_einnahmezeit():
-    zeit_option = st.radio(
-        "Einnahmezeit",
-        ["Morgen", "Mittag", "Abend", "Uhrzeit"],
-        horizontal=True,
-        key="zeit_option_radio"
-    )
+    st.markdown("Einnahmezeit")
 
     col1, col2 = st.columns(2)
     with col1:
@@ -38,9 +33,7 @@ def get_einnahmezeit():
             key="uhrzeit_minuten"
         )
 
-    if zeit_option == "Uhrzeit":
-        return f"{int(stunden):02d}:{int(minuten):02d}"
-    return zeit_option
+    return f"{int(stunden):02d}:{int(minuten):02d}"
 
 def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
     if intervall_type == "Täglich":
