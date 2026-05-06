@@ -38,3 +38,4 @@ pg = st.navigation([
     pg_Blutdruckeingabe,
     pg_bloodchart
 ])
+pg.run()
