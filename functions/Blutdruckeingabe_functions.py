@@ -31,7 +31,7 @@ def classify_blood_pressure(systolisch, diastolisch):
     Klassifiziert den Blutdruck basierend auf WHO-Richtlinien.
     Rückgabe: String mit der Kategorie
     """
-    if systolisch < 120 and diastolisch < 80:
+    if 70 <= systolisch <= 120 and 40 <= diastolisch <= 80:
         return "Optimaler Blutdruck"
     elif 120 <= systolisch <= 129 and 80 <= diastolisch <= 84:
         return "Normaler Blutdruck"
