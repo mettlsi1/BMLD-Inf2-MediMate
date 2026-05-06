@@ -41,14 +41,16 @@ if st.session_state.medikamente:
         with st.container():
             st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
 
-            # Zeige die Medikamente für diese Tageszeiten in 3 Spalten
-            cols = st.columns(3)
-            
-            for idx, zeit in enumerate(TIMES_OF_DAY):
+            # Zeige die Medikamente für diese Tageszeiten in Spalten
+            times = sorted(schedule[current_date].keys())
+            cols = st.columns(len(times)) if times else [st.container()]
+
+            for idx, zeit in enumerate(times):
                 with cols[idx]:
                     meds = schedule[current_date][zeit]
-                    
+        
                     st.markdown(f"**{zeit}**")
+        
                     
                     if meds:
                         for med_idx, med in enumerate(meds):
