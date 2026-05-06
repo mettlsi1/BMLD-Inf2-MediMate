@@ -33,15 +33,15 @@ def show_success_message():
         st.balloons()
         st.session_state.show_balloons = False
 
-def are_all_medications_taken_for_day(medications, {current_date}, taken_list):
+def are_all_medications_taken_for_day(medications, current_date, taken_list):
     """Prüft, ob alle Medikamente eines bestimmten Tages eingenommen wurden."""
     all_meds_for_day = []
     
-    for zeit in TIMES_OF_DAY:
-        for med_idx, med in enumerate(medications):
-            if med.get("Zeit") == zeit:
-                med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
-                all_meds_for_day.append(med_key)
+    for med_idx, med in enumerate(medications):
+        # Checke die Zeit, unabhängig davon, ob sie vordefiniert oder eine Uhrzeit ist
+        zeit = med.get("Zeit", "Morgen")
+        med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
+        all_meds_for_day.append(med_key)
     
     return len(all_meds_for_day) > 0 and all(med_key in taken_list for med_key in all_meds_for_day)
 
