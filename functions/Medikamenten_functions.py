@@ -29,7 +29,7 @@ def get_einnahmezeit():
             min_value=0,
             max_value=59,
             value=0,
-            step=1,
+            step=5,
             key="uhrzeit_minuten"
         )
 
