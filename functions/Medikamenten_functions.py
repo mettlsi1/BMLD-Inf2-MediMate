@@ -18,29 +18,28 @@ def get_einnahmezeit():
         key="zeit_option_radio"
     )
 
+    col1, col2 = st.columns(2)
+    with col1:
+        stunden = st.number_input(
+            "Stunden",
+            min_value=0,
+            max_value=23,
+            value=8,
+            step=1,
+            key="uhrzeit_stunden"
+        )
+    with col2:
+        minuten = st.number_input(
+            "Minuten",
+            min_value=0,
+            max_value=59,
+            value=0,
+            step=1,
+            key="uhrzeit_minuten"
+        )
+
     if zeit_option == "Uhrzeit":
-        col1, col2 = st.columns(2)
-        with col1:
-            stunden = st.number_input(
-                "Stunden",
-                min_value=0,
-                max_value=23,
-                value=8,
-                step=1,
-                key="uhrzeit_stunden"
-            )
-        with col2:
-            minuten = st.number_input(
-                "Minuten",
-                min_value=0,
-                max_value=59,
-                value=0,
-                step=1,
-                key="uhrzeit_minuten"
-            )
-
         return f"{int(stunden):02d}:{int(minuten):02d}"
-
     return zeit_option
 
 def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
