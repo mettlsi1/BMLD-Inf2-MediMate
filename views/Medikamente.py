@@ -4,19 +4,18 @@ import pandas as pd
 st.title('Deine Medikamente')
 
 # Lade Medikamente aus der Switch Drive, falls nicht im Session-State
-if "medikamente" not in st.session_state:
-    data_manager = st.session_state.data_manager
-    med_df = data_manager.load_user_data(
-        'medikamente.csv',
-        initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres"])
-    )
-    st.session_state.medikamente = med_df.to_dict('records')
-
+data_manager = st.session_state.data_manager
 
 if st.session_state.medikamente:
-    df = pd.DataFrame(st.session_state.medikamente)
-    df.index = df.index + 1
-    st.dataframe(df)
+    for index, med in enumerate(st.session_state.medikamente):
+        col1, col2, col3 = st.columns([4, 4, 1])
+        col1.write(f"**{med['Name']}**")
+        col2.write(f"{med['Dosis']} — {med['Zeit']} — {med.get('Intervall', '')}")
+        if col3.button("Löschen", key=f"delete_{index}"):
+            st.session_state.medikamente.pop(index)
+            med_df = pd.DataFrame(st.session_state.medikamente)
+            data_manager.save_user_data(med_df, 'medikamente.csv')
+            st.experimental_rerun()
 else:
     st.info("Noch keine Medikamente hinzugefügt.")
 
