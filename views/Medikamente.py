@@ -15,7 +15,7 @@ if st.session_state.medikamente:
             st.session_state.medikamente.pop(index)
             med_df = pd.DataFrame(st.session_state.medikamente)
             data_manager.save_user_data(med_df, 'medikamente.csv')
-            st.experimental_rerun()
+            st.rerun()
 else:
     st.info("Noch keine Medikamente hinzugefügt.")
 
