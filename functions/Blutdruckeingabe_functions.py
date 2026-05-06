@@ -15,10 +15,16 @@ def validate_blutdruck_input(systolisch, diastolisch, pws):
 
 def check_kritical_values(systolisch, diastolisch, pws):
     """
-    Prüft, ob die Blutdruckwerte kritisch sind (nur bei schwerem Bluthochdruck).
+    Prüft, ob die Blutdruckwerte kritisch sind.
+    Kritisch bei: zu hohem Druck (>=180/>=110) oder zu niedrigem Druck (<70/<40)
     Rückgabe: True wenn kritisch, False wenn normal
     """
-    return systolisch >= 180 or diastolisch >= 110
+    # Zu hoher Druck
+    high_critical = systolisch >= 180 or diastolisch >= 110
+    # Zu niedriger Druck
+    low_critical = systolisch < 70 or diastolisch < 40
+    
+    return high_critical or low_critical
 
 def classify_blood_pressure(systolisch, diastolisch):
     """
