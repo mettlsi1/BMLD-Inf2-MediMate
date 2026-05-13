@@ -20,7 +20,6 @@ with col1:
     st.subheader("💊 Medikamente")
     st.write("Übersicht über deine Medikamente und Einnahmezeiten.")
     st.write("")  # Spacer
-    st.write("")  # Spacer
     if st.button("Zu meinen Medikamenten"):
         st.switch_page("views/Medikamente.py")
 
