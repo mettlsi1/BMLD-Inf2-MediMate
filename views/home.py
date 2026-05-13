@@ -8,7 +8,7 @@ st.markdown("### Was MediMate für dich erledigt")
 st.write(
     "- 📝 Medikamente erfassen und verwalten\n"
     "- 📅 Einnahmeplan im Kalender einsehen\n"
-    "- 🩺 Blutdruckwerte erfassen"
+    "- 🩺 Blutdruckwerte erfassen\n"
     "- 📊 Darstellung der Blutdruckwerte"
 )
 
