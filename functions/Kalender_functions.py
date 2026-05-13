@@ -38,15 +38,13 @@ def show_success_message():
 
 def are_all_medications_taken_for_day(medications, current_date, taken_list):
     """Prüft, ob alle Medikamente eines bestimmten Tages eingenommen wurden."""
-    all_meds_for_day = []
+    if not medications:
+        return False
     
-    for med_idx, med in enumerate(medications):
-        # Checke die Zeit, unabhängig davon, ob sie vordefiniert oder eine Uhrzeit ist
-        zeit = med.get("Zeit", "Morgen")
-        med_key = f"{current_date}_{zeit}_{med['Name']}_{med_idx}"
-        all_meds_for_day.append(med_key)
-    
-    return len(all_meds_for_day) > 0 and all(med_key in taken_list for med_key in all_meds_for_day)
+    return all(
+        f"{current_date}_{med.get('Zeit', 'Morgen')}_{med['Name']}_{idx}" in taken_list
+        for idx, med in enumerate(medications)
+    )
 
 def organize_medications_by_day(medications):
     """Organisiert Medikamente für die nächsten 7 Tage nach Tageszeit."""
