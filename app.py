@@ -11,7 +11,6 @@ data_manager = DataManager(       # initialize data manager
     ) 
 login_manager = LoginManager(data_manager) # handles user login and registration
 login_manager.login_register()             # stops if not logged in
-# --- END OF NEW CODE ---
 
 
 st.set_page_config(page_title="MediMate", page_icon=":material/home:")

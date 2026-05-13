@@ -12,6 +12,8 @@ st.title('Blutdruckeingabe')
 
 # Zeige das Bild der korrekten Messhaltung
 st.image("images/Blutdruckanweisungen.jpg", use_container_width=True, caption="Korrekte Messposition für Blutdruckmessung")
+st.image("images/Blutdruckanweisungen.jpg", use_container_width=True, caption="Korrekte Messposition für Blutdruckmessung")
+st.caption("Quelle: [USZ - Blutdruck](https://www.usz.ch/blutdruck/)")
 
 # Initialisiere die Blutdruckliste in der Session
 initialize_blutdruck_state(st.session_state.data_manager)
