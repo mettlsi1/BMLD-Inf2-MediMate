@@ -37,4 +37,4 @@ with col3:
 st.divider()
 
 st.write("Diese App wurde im Rahmen des Moduls 'BMLD Informatik 2' an der ZHAW entwickelt:")
-st.write("- Jessica Schmid\n- Valeria Schönyan\n- Simon Mettler")
+st.write("- Jessica Schmid (schmij30@students.zhaw.ch)\n- Valeria Schönyan (schoeva1@students.zhaw.ch)\n- Simon Mettler (mettlsi1@students.zhaw.ch)")
