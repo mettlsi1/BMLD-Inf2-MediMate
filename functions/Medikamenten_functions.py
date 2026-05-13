@@ -11,29 +11,17 @@ def initialize_medikamente_state(data_manager):
         st.session_state.medikamente = med_df.to_dict('records')
 
 def get_einnahmezeit():
-    st.markdown("Einnahmezeit")
-
-    col1, col2 = st.columns(2)
-    with col1:
-        stunden = st.number_input(
-            "Stunden",
-            min_value=0,
-            max_value=23,
-            value=8,
-            step=1,
-            key="uhrzeit_stunden"
-        )
-    with col2:
-        minuten = st.number_input(
-            "Minuten",
-            min_value=0,
-            max_value=59,
-            value=0,
-            step=5,
-            key="uhrzeit_minuten"
-        )
-
-    return f"{int(stunden):02d}:{int(minuten):02d}"
+    st.markdown("**Einnahmezeit**")
+    
+    # Einzelnes Zeit-Eingabefeld statt zwei separaten Feldern
+    zeit_input = st.time_input(
+        "Wähle die Einnahmezeit",
+        value=datetime.time(8, 0),  # Standardwert 08:00
+        key="uhrzeit_input"
+    )
+    
+    # Konvertiere datetime.time zu String Format "HH:MM"
+    return zeit_input.strftime("%H:%M")
 
 def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
     if intervall_type == "Täglich":

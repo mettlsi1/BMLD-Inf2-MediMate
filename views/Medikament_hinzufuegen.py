@@ -61,4 +61,4 @@ with st.form("add_medication_form"):
             st.error("Bitte einen Namen und eine gültige Dosis eingeben.")
 
 if st.button("Zurück zur Medikamentenliste"):
-    st.switch_page("views/Medikamente.py")
+    st.switch_page("views/Medikamentenübersicht.py")
