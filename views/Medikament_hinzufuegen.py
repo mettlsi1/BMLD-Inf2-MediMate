@@ -14,6 +14,10 @@ initialize_medikamente_state(st.session_state.data_manager)
 
 st.markdown("Bitte fülle die folgenden Felder aus, um ein neues Medikament zu speichern.")
 
+# Stelle sicher, dass die Liste existiert
+if "medikamente" not in st.session_state:
+    st.session_state.medikamente = []
+
 with st.form("add_medication_form"):
     name = st.text_input("Medikamentenname")
     col_tabletten, col_mg = st.columns(2)
