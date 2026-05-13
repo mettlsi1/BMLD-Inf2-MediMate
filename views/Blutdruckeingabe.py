@@ -5,7 +5,7 @@ from functions.Blutdruckeingabe_functions import (
     validate_blutdruck_input,
     save_blutdruck,
     check_kritical_values,
-    classify_blood_pressure  # NEU
+    classify_blood_pressure 
 )
 
 st.title('Blutdruckeingabe')

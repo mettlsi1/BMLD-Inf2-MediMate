@@ -13,25 +13,22 @@ def initialize_blutdruck_state(data_manager):
 def validate_blutdruck_input(systolisch, diastolisch, pws):
     return systolisch > 0 and diastolisch > 0 and pws > 0
 
-def check_critical_values(systolisch, diastolisch, pws):
+def check_kritical_values(systolisch, diastolisch, pws):
     """
     Prüft, ob die Blutdruckwerte kritisch sind.
     Kritisch bei: zu hohem Druck (>=180/>=110) oder zu niedrigem Druck (<70/<40)
     Rückgabe: True wenn kritisch, False wenn normal
     """
-    # Zu hoher Druck
     high_critical = systolisch >= 180 or diastolisch >= 110
-    # Zu niedriger Druck
     low_critical = systolisch < 70 or diastolisch < 40
-    
     return high_critical or low_critical
 
 def classify_blood_pressure(systolisch, diastolisch):
     """
-    Klassifiziert den Blutdruck basierend nach WHO-Richtlinien.
+    Klassifiziert den Blutdruck basierend auf WHO-Richtlinien.
     Rückgabe: String mit der Kategorie
     """
-    if 70 <= systolisch <= 120 and 40 <= diastolisch <= 80:
+    if systolisch < 120 and diastolisch < 80:
         return "Optimaler Blutdruck"
     elif 120 <= systolisch <= 129 and 80 <= diastolisch <= 84:
         return "Normaler Blutdruck"
