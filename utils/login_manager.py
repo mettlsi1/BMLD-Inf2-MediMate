@@ -124,3 +124,12 @@ class LoginManager:
                 st.success("Credentials saved successfully")
             except Exception as e:
                 st.error(f"Failed to save credentials: {e}")
+
+
+login_manager = LoginManager(data_manager)
+login_manager.login_register()
+
+# Speichere data_manager in session state damit andere Views darauf zugreifen können
+st.session_state.data_manager = data_manager
+
+st.set_page_config(page_title="MediMate", page_icon=":material/home:")
