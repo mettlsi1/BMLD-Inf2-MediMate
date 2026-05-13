@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 
 def initialize_medikamente_state(data_manager):
-    if "medikamente" not in st.session_state:
+    if "medikamente" not in st.session_state or st.session_state.medikamente is None:
         med_df = data_manager.load_user_data(
             'medikamente.csv',
             initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres", "Intervall"])
