@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
+from functions.Blutdruckeingabe_functions import initialize_blutdruck_state
 
 st.title("Blutdruckgrafik")
 
-if "blutdruck" not in st.session_state:
+# Initialisiere die Blutdruckdaten (falls noch nicht geschehen)
+initialize_blutdruck_state(st.session_state.data_manager)
+
+if "blutdruck" not in st.session_state or not st.session_state.blutdruck:
     st.info("Keine Blutdruckdaten vorhanden.")
 else:
     bp_df = pd.DataFrame(st.session_state.blutdruck)
