@@ -4,8 +4,9 @@ from functions.Medikamenten_functions import initialize_medikamente_state
 
 st.title('💊 Deine Medikamente')
 
-# Lade Medikamente aus der Switch Drive
+# Initialisiere die Medikamentenliste in der Session
 data_manager = st.session_state.data_manager
+initialize_medikamente_state(data_manager)
 
 if st.session_state.medikamente:
     st.subheader(f"Du nimmst {len(st.session_state.medikamente)} Medikament{'e' if len(st.session_state.medikamente) != 1 else ''}")
