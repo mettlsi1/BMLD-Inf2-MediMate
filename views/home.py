@@ -3,13 +3,13 @@ import streamlit as st
 st.title("Willkommen bei MediMate")
 st.subheader("Dein Medikamenten-Monitoring-Tool")
 
-st.info("Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.")
 
 st.markdown("### Was MediMate für dich erledigt")
 st.write(
-    "- 📝 Medikamente verwalten\n"
-    "- 📅 Einnahmeplan im Kalender sehen\n"
+    "- 📝 Medikamente erfassen und verwalten\n"
+    "- 📅 Einnahmeplan im Kalender einsehen\n"
     "- 🩺 Blutdruckwerte erfassen"
+    "- 📊 Darstellung der Blutdruckwerte"
 )
 
 st.divider()
@@ -37,6 +37,8 @@ with col3:
     st.write("")
     if st.button("Blutdruck erfassen"):
         st.switch_page("views/Blutdruckeingabe.py")
+
+st.info("Bitte konsultieren Sie einen Arzt für eine vollständige Beurteilung.")
 
 st.divider()
 
