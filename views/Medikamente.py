@@ -1,30 +1,48 @@
 import streamlit as st
 import pandas as pd
 
-st.title('Deine Medikamente')
+st.title('💊 Deine Medikamente')
 
-# Lade Medikamente aus der Switch Drive, falls nicht im Session-State
+# Lade Medikamente aus der Switch Drive
 data_manager = st.session_state.data_manager
 
 if st.session_state.medikamente:
+    st.subheader(f"Du nimmst {len(st.session_state.medikamente)} Medikament{'e' if len(st.session_state.medikamente) != 1 else ''}")
+    
     for index, med in enumerate(st.session_state.medikamente):
-        col1, col2, col3 = st.columns([4, 4, 1])
-        col1.write(f"**{med['Name']}**")
-        col2.write(f"{med['Dosis']} — {med['Zeit']} — {med.get('Intervall', '')}")
-        if col3.button("Löschen", key=f"delete_{index}"):
-            st.session_state.medikamente.pop(index)
-            med_df = pd.DataFrame(st.session_state.medikamente)
-            data_manager.save_user_data(med_df, 'medikamente.csv')
-            st.rerun()
+        # Karten-basiertes Layout mit border
+        with st.container(border=True):
+            col1, col2, col3 = st.columns([3, 3, 0.5])
+            
+            # Medikamentenname und Dosis
+            with col1:
+                st.markdown(f"### 💊 {med['Name']}")
+                st.caption(f"**Dosis:** {med['Dosis']}")
+            
+            # Zeit und Intervall
+            with col2:
+                st.markdown(f"**⏰ Zeiten:** {med['Zeit']}")
+                if med.get('Intervall'):
+                    st.caption(f"**Rhythmus:** {med['Intervall']}")
+            
+            # Löschen Button
+            with col3:
+                if st.button("🗑️", key=f"delete_{index}", help="Medikament löschen"):
+                    st.session_state.medikamente.pop(index)
+                    med_df = pd.DataFrame(st.session_state.medikamente)
+                    data_manager.save_user_data(med_df, 'medikamente.csv')
+                    st.rerun()
 else:
-    st.info("Noch keine Medikamente hinzugefügt.")
+    st.info("📝 Noch keine Medikamente hinzugefügt. Füge jetzt dein erstes Medikament hinzu!")
 
-col1, col2, col3 = st.columns(3)
+# Bessere Raumnutzung: Buttons nebeneinander
+st.divider()
+col1, col2, col3 = st.columns([1, 1, 2])
+
 with col1:
-    if st.button("Medikament hinzufügen"):
+    if st.button("➕ Medikament hinzufügen", use_container_width=True):
         st.switch_page("views/Medikament_hinzufuegen.py")
 
-col1, col2, col3 = st.columns(3)
-with col1:
-    if st.button("📅 Zum Kalender"):
+with col2:
+    if st.button("📅 Zum Kalender", use_container_width=True):
         st.switch_page("views/Kalender.py")
