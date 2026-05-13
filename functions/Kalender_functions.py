@@ -8,23 +8,18 @@ TIMES_OF_DAY = ["Morgen", "Mittag", "Abend"]
 def initialize_session_state(data_manager):
     """Initialisiert alle Session State Variablen."""
     default_values = {
-        "medikamente": None,  # wird separat geladen
-        "taken_medications": [],
-        "show_success": False,
-        "show_balloons": False
-    }
-    
-    for key, value in default_values.items():
-        if key not in st.session_state:
-            st.session_state[key] = value
-    
-    # Medikamente separat laden
-    if "medikamente" not in st.session_state:
-        med_df = data_manager.load_user_data(
-            'medikamente.csv',
-            initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres"])
-        )
-        st.session_state.medikamente = med_df.to_dict('records')
+    "taken_medications": [],
+    "show_success": False,
+    "show_balloons": False
+}
+
+for key, value in default_values.items():
+    if key not in st.session_state:
+        st.session_state[key] = value
+
+if "medikamente" not in st.session_state or st.session_state.medikamente is None:
+    med_df = data_manager.load_user_data(...)
+    st.session_state.medikamente = med_df.to_dict('records')
 
 def show_success_message():
     """Zeigt Erfolgs- und Ballon-Meldungen."""
