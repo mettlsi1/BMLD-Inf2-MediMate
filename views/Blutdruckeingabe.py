@@ -20,22 +20,34 @@ initialize_blutdruck_state(st.session_state.data_manager)
 st.markdown("Bitte geben Sie Ihre Blutdruckwerte ein.")
 
 with st.form("add_blood_pressure_form"):
-    inputs_config = {
-        "Systolischer Blutdruck (mmHg)": {"min": 0, "max": 250, "value": 120},
-        "Diastolischer Blutdruck (mmHg)": {"min": 0, "max": 250, "value": 80},
-        "PWS (Puls)": {"min": 40, "max": 200, "value": 70}
-    }
+    col1, col2, col3 = st.columns(3)
     
-    cols = st.columns(3)
-    values = {}
+    with col1:
+        systolisch = st.number_input(
+            "Systolischer Blutdruck (mmHg)",
+            min_value=0,
+            max_value=250,
+            value=120,
+            step=1
+        )
     
-    for i, (label, config) in enumerate(inputs_config.items()):
-        with cols[i]:
-            values[label] = st.number_input(label, **config, step=1)
+    with col2:
+        diastolisch = st.number_input(
+            "Diastolischer Blutdruck (mmHg)",
+            min_value=0,
+            max_value=250,
+            value=80,
+            step=1
+        )
     
-    systolisch = values["Systolischer Blutdruck (mmHg)"]
-    diastolisch = values["Diastolischer Blutdruck (mmHg)"]
-    pws = values["PWS (Puls)"]
+    with col3:
+        pws = st.number_input(
+            "PWS (Puls)",
+            min_value=40,
+            max_value=200,
+            value=70,
+            step=1
+        )
     
     submitted = st.form_submit_button("Speichern")
 if submitted:
@@ -61,10 +73,8 @@ if st.session_state.blutdruck:
 else:
     st.info("Noch keine Blutdruckwerte gespeichert.")
 
-col1, col2 = st.columns(2)
-with col1:
-    if st.button("Zur Blutdruckgrafik"):
-        st.switch_page("views/Blutdruckgrafik.py")
-with col2:
-    if st.button("Zurück zur Startseite"):
-        st.switch_page("views/home.py")
+if st.button("Zur Blutdruckgrafik"):
+    st.switch_page("views/Blutdruckgrafik.py")
+
+if st.button("Zurück zur Startseite"):
+    st.switch_page("views/home.py")
