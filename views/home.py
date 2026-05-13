@@ -20,7 +20,7 @@ with col1:
     st.subheader("💊 Medikamente")
     st.write("Übersicht über deine Medikamente und Einnahmezeiten.")
     if st.button("Zu meinen Medikamenten"):
-        st.switch_page("views/Medikamente.py")
+        st.switch_page("views/Medikamentenübersicht.py")
 
 with col2:
     st.subheader("📅 Kalender")
