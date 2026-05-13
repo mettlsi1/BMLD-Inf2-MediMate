@@ -19,18 +19,24 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.subheader("💊 Medikamente")
     st.write("Übersicht über deine Medikamente und Einnahmezeiten.")
+    st.write("")  # Spacer
+    st.write("")  # Spacer
     if st.button("Zu meinen Medikamenten"):
         st.switch_page("views/Medikamente.py")
 
 with col2:
     st.subheader("📅 Kalender")
     st.write("Dein Einnahmezeitplan auf einen Blick.")
+    st.write("")
+    st.write("")
     if st.button("Zum Kalender"):
         st.switch_page("views/Kalender.py")
 
 with col3:
     st.subheader("🩸 Blutdruck")
     st.write("Blutdruckwerte erfassen und dokumentieren.")
+    st.write("")
+    st.write("")
     if st.button("Blutdruck erfassen"):
         st.switch_page("views/Blutdruckeingabe.py")
 
