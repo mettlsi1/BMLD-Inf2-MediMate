@@ -24,14 +24,18 @@ def get_einnahmezeit():
     return zeit_input.strftime("%H:%M")
 
 def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
-    if intervall_type == "Täglich":
-        return "täglich"
-    if intervall_type == "Wöchentlich":
-        return "wöchentlich"
-    if intervall_type == "Alle":
-        if intervall_einheit == "Tage":
-            return f"alle_{x_value}_tage"
-        return f"alle_{x_value}_wochen"
+    fixed_intervals = {
+        "Täglich": "täglich",
+        "Wöchentlich": "wöchentlich"
+    }
+    
+    if intervall_type in fixed_intervals:
+        return fixed_intervals[intervall_type]
+    
+    if intervall_type == "Alle" and intervall_einheit:
+        suffix = "tage" if intervall_einheit == "Tage" else "wochen"
+        return f"alle_{x_value}_{suffix}"
+    
     return None
 
 def validate_medikament_input(name, dosis):
@@ -39,11 +43,8 @@ def validate_medikament_input(name, dosis):
 
 def save_medikament(name, dosis, zeit, weiteres, intervall_value):
     st.session_state.medikamente.append({
-        "Name": name.strip(),
-        "Dosis": dosis,
-        "Zeit": zeit,
-        "Weiteres": weiteres,
-        "Intervall": intervall_value
+        "Name": name.strip(), "Dosis": dosis, "Zeit": zeit, 
+        "Weiteres": weiteres, "Intervall": intervall_value
     })
 
     data_manager = st.session_state.data_manager
