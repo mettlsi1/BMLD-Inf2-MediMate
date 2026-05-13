@@ -48,20 +48,17 @@ def are_all_medications_taken_for_day(medications, current_date, taken_list):
 
 def organize_medications_by_day(medications):
     """Organisiert Medikamente für die nächsten 7 Tage nach Tageszeit."""
-    today = datetime.now().date()
-    schedule = {}
+    from collections import defaultdict
     
-    for i in range(7):
-        current_date = today + timedelta(days=i)
-        schedule[current_date] = {}
+    today = datetime.now().date()
+    schedule = {
+        today + timedelta(days=i): defaultdict(list)
+        for i in range(7)
+    }
     
     for med in medications:
         zeit = med.get("Zeit", "Morgen")
-        for i in range(7):
-            current_date = today + timedelta(days=i)
-            # Wenn dieser Zeit-Schlüssel noch nicht existiert, erstelle ihn
-            if zeit not in schedule[current_date]:
-                schedule[current_date][zeit] = []
-            schedule[current_date][zeit].append(med)
+        for dates in schedule.values():
+            dates[zeit].append(med)
     
     return schedule
