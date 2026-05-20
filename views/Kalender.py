@@ -9,9 +9,6 @@ from functions.Kalender_functions import (
     TIMES_OF_DAY
 )
 
-st.title('📅 Medikamentenkalender')
-st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
-
 # Initialisiere Session State
 initialize_session_state(st.session_state.data_manager)
 show_success_message()
@@ -25,6 +22,9 @@ with col1:
 with col2:
     if st.button("📊 Zur Medikamentenliste"):
         st.switch_page("views/Medikamentenübersicht.py")
+
+st.title('📅 Medikamentenkalender')
+st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
 
 # Organisiere die Medikamente
 if st.session_state.medikamente:
