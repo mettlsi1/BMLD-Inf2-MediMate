@@ -28,14 +28,14 @@ def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
         "Täglich": "täglich",
         "Wöchentlich": "wöchentlich"
     }
-    
+
     if intervall_type in fixed_intervals:
         return fixed_intervals[intervall_type]
-    
-    if intervall_type == "Alle" and intervall_einheit:
+
+    if intervall_type in ("Alle", "Alle ...") and intervall_einheit:
         suffix = "tage" if intervall_einheit == "Tage" else "wochen"
         return f"alle_{x_value}_{suffix}"
-    
+
     return None
 
 def validate_medikament_input(name, dosis):
