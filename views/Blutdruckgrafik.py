@@ -12,6 +12,9 @@ else:
     bp_df = pd.DataFrame(st.session_state.blutdruck)
     if not bp_df.empty:
         bp_df["Datum"] = pd.to_datetime(bp_df["Datum"])
+        # Zeitzone auf CET/CEST (Mitteleuropäische Zeit) setzen
+        if bp_df["Datum"].dt.tz is None:
+            bp_df["Datum"] = bp_df["Datum"].dt.tz_localize('Europe/Berlin')
         bp_df = bp_df.sort_values("Datum")
 
         chart = alt.Chart(bp_df).transform_fold(
@@ -20,7 +23,7 @@ else:
         ).mark_line(point=True).encode(
             x=alt.X(
                 "Datum:T",
-                axis=alt.Axis(title="Datum und Uhrzeit", format="%d.%m %H:%M", labelAngle=-45)
+                axis=alt.Axis(title="Datum und Uhrzeit (MEZ)", format="%d.%m %H:%M", labelAngle=-45)
             ),
             y=alt.Y(
                 "Wert:Q",
