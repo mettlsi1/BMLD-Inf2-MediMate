@@ -1,6 +1,15 @@
 import streamlit as st
 
-st.title("Willkommen bei MediMate")
+import streamlit as st
+
+col1, col2 = st.columns([3, 1])
+
+with col1:
+    st.title("Willkommen bei MediMate")
+
+with col2:
+    st.image("images/medimate.png", use_column_width=True)
+
 st.subheader("Dein Medikamenten-Monitoring-Tool")
 
 
