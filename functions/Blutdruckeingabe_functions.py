@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import pytz
 
 def initialize_blutdruck_state(data_manager):
     if "blutdruck" not in st.session_state:
@@ -44,8 +45,12 @@ def classify_blood_pressure(systolisch, diastolisch):
         return "Unklassifiziert"
 
 def save_blutdruck(systolisch, diastolisch, pws):
+    # Schweizer Zeitzone
+    ch_tz = pytz.timezone('Europe/Zurich')
+    now_ch = datetime.now(ch_tz)
+    
     st.session_state.blutdruck.append({
-        "Datum": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "Datum": now_ch.strftime("%Y-%m-%d %H:%M:%S"),
         "Systolisch": systolisch,
         "Diastolisch": diastolisch,
         "PWS": pws
