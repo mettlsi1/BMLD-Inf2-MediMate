@@ -96,4 +96,4 @@ with col1:
 
 with col2:
     if st.button("📊 Zur Medikamentenliste"):
-        st.switch_page("views/Medikamente.py")
+        st.switch_page("views/Medikamentenübersicht.py")
