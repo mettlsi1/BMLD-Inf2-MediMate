@@ -23,14 +23,14 @@ with col2:
     if st.button("📊 Zur Medikamentenliste"):
         st.switch_page("views/Medikamentenübersicht.py")
 
-st.title('📅 Medikamentenkalender')
+st.title('Medikamentenkalender')
 st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
 
-# Organisiere die Medikamente
+# Organisiation der Medikamente
 if st.session_state.medikamente:
     schedule = organize_medications_by_day(st.session_state.medikamente)
 
-    # Zeige die nächsten 7 Tage in einer Tabellenstruktur
+    # nächsten 7 Tage in einer Tabellenstruktur anzeigen
     for i in range(7):
         current_date = datetime.now().date() + timedelta(days=i)
 
@@ -38,7 +38,7 @@ if st.session_state.medikamente:
         if i > 0:
             st.markdown("---")
         
-        # Formatiere das Datum schön
+        # Datumsformatierung
         if i == 0:
             day_label = "🟢 Heute"
         elif i == 1:
@@ -47,11 +47,11 @@ if st.session_state.medikamente:
             deutsche_wochentage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
             day_label = deutsche_wochentage[current_date.weekday()]
         
-        # Starte den graublau gefärbten Container
+        # graublauen Container starten
         with st.container():
             st.markdown(f"<h4>{day_label} – {current_date.strftime('%d.%m.%Y')}</h4>", unsafe_allow_html=True)
 
-            # Zeige die Medikamente für diese Tageszeiten in Spalten
+            # Medikamente in Spalten anzeigen
             times = sorted(schedule[current_date].keys())
             cols = st.columns(len(times)) if times else [st.container()]
 
