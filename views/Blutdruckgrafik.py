@@ -22,7 +22,11 @@ else:
                 "Datum:T",
                 axis=alt.Axis(title="Datum und Uhrzeit", format="%d.%m %H:%M", labelAngle=-45)
             ),
-            y=alt.Y("Wert:Q", title="Messwert"),
+            y=alt.Y(
+                "Wert:Q",
+                title="Messwert",
+                scale=alt.Scale(domain=[20, 200])
+            ),
             color="Messwert:N"
         )
 
