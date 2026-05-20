@@ -16,6 +16,16 @@ st.markdown("Übersicht deiner Medikamente für die nächsten 7 Tage")
 initialize_session_state(st.session_state.data_manager)
 show_success_message()
 
+# Buttons für Navigation
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("➕ Medikament hinzufügen"):
+        st.switch_page("views/Medikament_hinzufuegen.py")
+
+with col2:
+    if st.button("📊 Zur Medikamentenliste"):
+        st.switch_page("views/Medikamentenübersicht.py")
+
 # Organisiere die Medikamente
 if st.session_state.medikamente:
     schedule = organize_medications_by_day(st.session_state.medikamente)
@@ -88,12 +98,3 @@ if st.session_state.medikamente:
 else:
     st.info("📋 Noch keine Medikamente hinzugefügt. Bitte füge zunächst ein Medikament hinzu.")
 
-# Buttons für Navigation
-col1, col2 = st.columns(2)
-with col1:
-    if st.button("➕ Medikament hinzufügen"):
-        st.switch_page("views/Medikament_hinzufuegen.py")
-
-with col2:
-    if st.button("📊 Zur Medikamentenliste"):
-        st.switch_page("views/Medikamentenübersicht.py")
