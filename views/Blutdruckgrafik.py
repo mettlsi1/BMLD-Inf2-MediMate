@@ -15,8 +15,8 @@ else:
         bp_df = bp_df.sort_values("Datum").tail(10)
         
         thresholds = pd.DataFrame([
-            {"value": 180, "label": "180 Systolisch!"},
-            {"value": 110, "label": "110 Diastolisch!"}
+            {"value": 180, "label": "180 Systolisch"},
+            {"value": 110, "label": "110 Diastolisch"}
         ])
 
         base_chart = alt.Chart(bp_df).transform_fold(
