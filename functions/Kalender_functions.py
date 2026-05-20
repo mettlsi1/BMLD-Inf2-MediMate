@@ -45,7 +45,7 @@ def are_all_medications_taken_for_day(medications, current_date, taken_list):
     )
 
 def medication_due_on_date(med, date, start_date):
-    intervall = med.get("Intervall", or "")
+    intervall = med.get("Intervall") or ""
     delta_days = (date - start_date).days
 
     if intervall == "täglich":
