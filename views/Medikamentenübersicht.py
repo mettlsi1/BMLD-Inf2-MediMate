@@ -11,19 +11,14 @@ initialize_medikamente_state(data_manager)
 if st.session_state.medikamente:
     st.subheader(f"Du nimmst {len(st.session_state.medikamente)} Medikament{'e' if len(st.session_state.medikamente) != 1 else ''}")
     
-    # 5 Farben im Zyklus
-    colors = ["#FF6B6B", "#4ECDC4", "#45B7D1", "#FFA07A", "#98D8C8"]
-    
     for index, med in enumerate(st.session_state.medikamente):
-        color = colors[index % 5]
-        
         # Karten-basiertes Layout mit border
         with st.container(border=True):
             col1, col2, col3 = st.columns([3, 3, 0.5])
             
             # Medikamentenname und Dosis
             with col1:
-                st.markdown(f'### <span style="color: {color}">💊</span> {med["Name"]}', unsafe_allow_html=True)
+                st.markdown(f"### 💊 {med['Name']}")
                 st.caption(f"**Dosis:** {med['Dosis']}")
             
             # Zeit und Intervall
