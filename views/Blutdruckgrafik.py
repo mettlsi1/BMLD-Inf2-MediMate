@@ -12,7 +12,7 @@ else:
     bp_df = pd.DataFrame(st.session_state.blutdruck)
     if not bp_df.empty:
         bp_df["Datum"] = pd.to_datetime(bp_df["Datum"])
-        bp_df = bp_df.sort_values("Datum")
+        bp_df = bp_df.sort_values("Datum").tail(10)
 
         chart = alt.Chart(bp_df).transform_fold(
             ["Systolisch", "Diastolisch", "PWS"],
