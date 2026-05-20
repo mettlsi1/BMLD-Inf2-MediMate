@@ -34,7 +34,7 @@ with st.form("add_medication_form"):
     else:
         dosis = ""    
 
-    zeit = get_einnahmezeit()  # Außerhalb des Formulars, damit sofort interaktiv
+    zeit = get_einnahmezeit()
     
     weiteres = st.selectbox("Weiteres", ["--", "Vor dem Essen", "Mit dem Essen", "Nach dem Essen"])
 
