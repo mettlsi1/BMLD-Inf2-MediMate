@@ -13,8 +13,13 @@ else:
     if not bp_df.empty:
         bp_df["Datum"] = pd.to_datetime(bp_df["Datum"])
         bp_df = bp_df.sort_values("Datum").tail(10)
+        
+        thresholds = pd.DataFrame([
+            {"value": 180, "label": "180! Systolisch"},
+            {"value": 110, "label": "110! Diastolisch"}
+        ])
 
-        chart = alt.Chart(bp_df).transform_fold(
+        base_chart = alt.Chart(bp_df).transform_fold(
             ["Systolisch", "Diastolisch", "PWS"],
             as_=["Messwert", "Wert"]
         ).mark_line(point=True).encode(
@@ -30,6 +35,22 @@ else:
             color="Messwert:N"
         )
 
+        threshold_lines = alt.Chart(thresholds).mark_rule(strokeDash=[4, 4]).encode(
+            y="value:Q",
+            color=alt.value("red")
+        )
+
+        threshold_labels = alt.Chart(thresholds).mark_text(
+            align="left",
+            dx=5,
+            dy=-5,
+            color="red"
+        ).encode(
+            y="value:Q",
+            text="label:N"
+        )
+
+        chart = alt.layer(base_chart, threshold_lines, threshold_labels)
         st.altair_chart(chart, use_container_width=True)
     else:
         st.info("Noch keine Blutdruckwerte gespeichert.")
