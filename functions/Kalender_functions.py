@@ -44,19 +44,38 @@ def are_all_medications_taken_for_day(medications, current_date, taken_list):
         for idx, med in enumerate(medications)
     )
 
+def medication_due_on_date(med, date, start_date):
+    intervall = med.get("Intervall", "")
+    delta_days = (date - start_date).days
+
+    if intervall == "täglich":
+        return True
+    if intervall == "wöchentlich":
+        return delta_days % 7 == 0
+    if intervall.startswith("alle_"):
+        parts = intervall.split("_")
+        if len(parts) == 3:
+            interval_value = int(parts[1])
+            unit = parts[2]
+            if unit == "tage":
+                return delta_days % interval_value == 0
+            if unit == "wochen":
+                return delta_days % (interval_value * 7) == 0
+    return False
+
 def organize_medications_by_day(medications):
-    """Organisiert Medikamente für die nächsten 7 Tage nach Tageszeit."""
     from collections import defaultdict
-    
+
     today = datetime.now().date()
     schedule = {
         today + timedelta(days=i): defaultdict(list)
         for i in range(7)
     }
-    
+
     for med in medications:
         zeit = med.get("Zeit", "Morgen")
-        for dates in schedule.values():
-            dates[zeit].append(med)
-    
+        for date in schedule:
+            if medication_due_on_date(med, date, today):
+                schedule[date][zeit].append(med)
+
     return schedule
