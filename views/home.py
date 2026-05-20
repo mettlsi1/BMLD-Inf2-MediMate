@@ -4,7 +4,7 @@ st.title("Willkommen bei MediMate")
 st.subheader("Dein Medikamenten-Monitoring-Tool")
 
 
-st.markdown("### Was MediMate für dich erledigt")
+st.markdown("#### Was MediMate für dich erledigt")
 st.write(
     "- 📝 Medikamente erfassen und verwalten\n"
     "- 📅 Einnahmeplan im Kalender einsehen\n"
