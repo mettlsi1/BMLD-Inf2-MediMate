@@ -6,7 +6,7 @@ def initialize_medikamente_state(data_manager):
     if "medikamente" not in st.session_state or st.session_state.medikamente is None:
         med_df = data_manager.load_user_data(
             'medikamente.csv',
-            initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres", "Intervall"])
+            initial_value=pd.DataFrame(columns=["Name", "Dosis", "Zeit", "Weiteres", "Intervall", "Startdatum"])
         )
         st.session_state.medikamente = med_df.to_dict('records')
 
@@ -41,10 +41,10 @@ def get_intervall_value(intervall_type, x_value=None, intervall_einheit=None):
 def validate_medikament_input(name, dosis):
     return name.strip() != "" and dosis != ""
 
-def save_medikament(name, dosis, zeit, weiteres, intervall_value):
+def save_medikament(name, dosis, zeit, weiteres, intervall_value, startdatum):
     st.session_state.medikamente.append({
         "Name": name.strip(), "Dosis": dosis, "Zeit": zeit, 
-        "Weiteres": weiteres, "Intervall": intervall_value
+        "Weiteres": weiteres, "Intervall": intervall_value, "Startdatum": startdatum.isoformat()
     })
 
     data_manager = st.session_state.data_manager
