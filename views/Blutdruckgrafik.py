@@ -54,3 +54,6 @@ else:
         st.altair_chart(chart, use_container_width=True)
     else:
         st.info("Noch keine Blutdruckwerte gespeichert.")
+
+if st.button("← Zurück zur Blutdruckeingabe"):
+    st.switch_page("pages/Blutdruckeingabe.py")
