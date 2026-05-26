@@ -55,11 +55,13 @@ with st.form("add_medication_form"):
     with col2:
         intervall_einheit = st.selectbox("", ["Tage", "Wochen"], key="einheit_select")
 
+    startdatum = st.date_input("Startdatum", value=datetime.now().date())
+
     submitted = st.form_submit_button("Hinzufügen")
     if submitted:
         if validate_medikament_input(name, dosis):
             intervall_value = get_intervall_value(intervall_type, x_value, intervall_einheit)
-            save_medikament(name, dosis, zeit, weiteres, intervall_value)
+            save_medikament(name, dosis, zeit, weiteres, intervall_value, startdatum)
             st.success(f"Medikament '{name}' hinzugefügt!")
         else:
             st.error("Bitte einen Namen und eine gültige Dosis eingeben.")
