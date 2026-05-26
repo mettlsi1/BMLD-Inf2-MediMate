@@ -75,8 +75,8 @@ else:
 
 with col1:
     if st.button("📊 Zur Blutdruckgrafik"):
-    st.switch_page("views/Blutdruckgrafik.py")
+        st.switch_page("views/Blutdruckgrafik.py")
 
 with col2:
     if st.button("🏠 Zurück zur Startseite"):
-    st.switch_page("views/home.py")
+        st.switch_page("views/home.py")
