@@ -50,6 +50,7 @@ with st.form("add_blood_pressure_form"):
         )
     
     submitted = st.form_submit_button("Speichern")
+
 if submitted:
     if validate_blutdruck_input(systolisch, diastolisch, pws):
         save_blutdruck(systolisch, diastolisch, pws)
@@ -73,10 +74,11 @@ if st.session_state.blutdruck:
 else:
     st.info("Noch keine Blutdruckwerte gespeichert.")
 
-with col1:
+col_nav1, col_nav2 = st.columns(2)
+with col_nav1:
     if st.button("📊 Zur Blutdruckgrafik"):
         st.switch_page("views/Blutdruckgrafik.py")
 
-with col2:
+with col_nav2:
     if st.button("🏠 Zurück zur Startseite"):
         st.switch_page("views/home.py")
