@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime, date, timedelta
 
 # Konstanten
 TIMES_OF_DAY = ["Morgen", "Mittag", "Abend"]
@@ -39,8 +39,24 @@ def are_all_medications_taken_for_day(medications, current_date, taken_list):
         for idx, med in enumerate(medications)
     )
 
+def parse_start_date(med):
+    start_date = med.get("Startdatum", "")
+    if isinstance(start_date, date):
+        return start_date
+    if isinstance(start_date, datetime):
+        return start_date.date()
+    try:
+        return datetime.strptime(str(start_date), "%Y-%m-%d").date()
+    except (ValueError, TypeError):
+        return datetime.now().date()
+
 def medication_due_on_date(med, date, start_date):
     intervall = str(med.get("Intervall") or "")
+    start_date = parse_start_date(med)
+
+    if date < start_date:
+        return False
+
     delta_days = (date - start_date).days
 
     if intervall == "täglich":
