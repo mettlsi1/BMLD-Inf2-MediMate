@@ -48,3 +48,7 @@ with col1:
 with col2:
     if st.button("📅 Zum Kalender", use_container_width=True):
         st.switch_page("views/Kalender.py")
+
+with col3:
+    if st.button("🏠 Zur Startseite", use_container_width=True):
+        st.switch_page("views/home.py")
