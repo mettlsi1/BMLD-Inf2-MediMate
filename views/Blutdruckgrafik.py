@@ -56,4 +56,4 @@ else:
         st.info("Noch keine Blutdruckwerte gespeichert.")
 
 if st.button("← Zurück zur Blutdruckeingabe"):
-    st.switch_page("pages/Blutdruckeingabe.py")
+    st.switch_page("views/Blutdruckeingabe.py")
