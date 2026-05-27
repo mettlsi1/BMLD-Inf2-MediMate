@@ -2,7 +2,7 @@
 ### Was wissen wir? Was wissen wir nicht?
 Wir wissen, dass unsere App die wichtigsten Funktionen technisch korrekt ausführt. Medikamenten können hinzugefügt, gespeichert und angezeigt werden. Zusätzlich können Blutdruckwerte eingetragen und grafisch dargestellt werden. Wir wissen ausserdem, dass die Navigation übersichtlich aufgebaut ist und die wichtigsten Funktionen über die Seitenleiste erreichbar sind.
 
-Nicht sicher waren wir uns jedcoh, ob neue Nutzerinnen und Nutzer die App ohne Erklärung sofort verstehen würden. Besonders beim Medikamentenkalender wussten wir nicht, ob die Abhakfunktion intuitiv genug erkennbar ist. Ebenfalls wollten wir herausfinden, ob die Blutdruckfunktion und die medizinischen Begriffe verständlich genug erklärt werden.
+Nicht sicher waren wir uns jedoch, ob neue Nutzerinnen und Nutzer die App ohne Erklärung sofort verstehen würden. Besonders beim Medikamentenkalender wussten wir nicht, ob die Abhakfunktion intuitiv genug erkennbar ist. Ebenfalls wollten wir herausfinden, ob die Blutdruckfunktion und die medizinischen Begriffe verständlich genug erklärt werden.
 
 ### Was möchten wir testen?
 ![Icon_Nutzertesting](/images/Icon_Nutzertesting.png)
@@ -39,5 +39,8 @@ Die meisten Testpersonen konnten die App schnell verstehen und die wichtigsten F
 Die Navigation innerhalb der App wurde von den Testpersonen als übersichtlich und einfach verständlich bewertet. Durch die Seitenleiste auf der linken Seite konnten die Funktionen schnell gefunden werden. Besonders positiv wurde das Wechseln zwischen den einzelnen Seiten der App, zum Beispiel vom ,,Medikament hinzufügen’’ zurück zur Homepage, empfunden.
 Beim Medikamentenkalender war anfangs jedoch nicht sofort ersichtlich, dass Medikamente abgehakt werden können. Eine Testperson bemerkte diese Funktion erst später. Als Verbesserungsvorschlag wurde genannt, sichtbare Kästchen oder Checkboxen zum Abhaken einzubauen.
 Zusätzlich wurde vorgeschlagen, in Zukunft Benachrichtigungen oder Erinnerungen für die Medikamenteneinnahme einzubauen. Dadurch könnte die App Nutzerinnen und Nutzer noch besser im Alltag unterstützen und helfen, Medikamente rechtzeitig einzunehmen.
+
+## Auswertung: Test-Grid
+![Auswertung-Test-Grid](/images/Icon_Nutzertesting.png)
 
 
