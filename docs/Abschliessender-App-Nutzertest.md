@@ -43,3 +43,7 @@ Zusätzlich wurde vorgeschlagen, in Zukunft Benachrichtigungen oder Erinnerungen
 ## Auswertung: Test-Grid
 ![Auswertung-Test-Grid](/images/Auswertung-Test-Grid.png)
 
+
+
+## Schlussfolgerungen
+Unsere App konnte im abschliessenden Nutzertesting grösstenteils überzeugen und wurde von den Testpersonen als hiflreich, verständlich und alltagstauglich wahrgenommen. Besonders positiv bewertet wurden die übersichtliche Navigation, die Medikamentenübersicht sowie die Blutdruckgrafik. Durch das Testing konnten wir aber aber erkennen, werlche Funktionen noch verbessert oder klarer dargestellt werden sollten, zum Beispiel die Abhakfunktion im Kalender oder mögliche Benachrichtigungen zur Einnahme-Erinnerung. Insgesamt hat uns das Nutzertesting geholfen, unsere App aus Sicht echter Nutzerinnen und Nutzer zu betrachten und wertvolle Erkenntnisse für zukünftige Verbesserungen zu gewinnen.
