@@ -24,9 +24,19 @@ Der Test wird anhand der Rückmeldungen und Beobachtungen der Testpersonen bewer
 ### Was ist ein Erfolg?
 Ein Erfolg ist für uns, wenn die Testpersonen die wichtigsten Funktionen der App selbständig und ohne grosse Erklärungen bedienen können und die App als hilfreich und verständlich wahrnehmen.
 
+Besonders erfolgreich wäre das Testing, wenn:
+- Medikamente problemlos hinzugefügt werden können
+- der Wochenkalender verständlich genutzt wird
+- die Blutdruckwerte ohne Probleme eingetragen werden können
+- die Blutdruckgrafik nachvollziehbar ist
+- die Navigation einfach funktioniert
+- die Testpersonen die App im Alltag als nützlich empfinden
+
 
 ## Protokoll
 Die meisten Testpersonen konnten die App schnell verstehen und die wichtigsten Funktionen ohne grosse Hilfe benutzen. Besonders positiv wurde die App-Beschreibung auf der Homepage bewertet. Man empfand die Beschreibung auf der Homepage sehr hilfreich, da dort gut erklärt wird, was man mit der App machen kann und welche Funktionen vorhanden sind. Dadurch konnten sich die Testpersonen schnell orientieren. Auch die Anleitung zur Blutdruckmessung wurde als nützlich empfunden. Besonders Personen ohne medizinische Vorkenntnisse fanden die zusätzlichen Erklärungen sehr hilfreich.
 Die Navigation innerhalb der App wurde von den Testpersonen als übersichtlich und einfach verständlich bewertet. Durch die Seitenleiste auf der linken Seite konnten die Funktionen schnell gefunden werden. Besonders positiv wurde das Wechseln zwischen den einzelnen Seiten der App, zum Beispiel vom ,,Medikament hinzufügen’’ zurück zur Homepage, empfunden.
 Beim Medikamentenkalender war anfangs jedoch nicht sofort ersichtlich, dass Medikamente abgehakt werden können. Eine Testperson bemerkte diese Funktion erst später. Als Verbesserungsvorschlag wurde genannt, sichtbare Kästchen oder Checkboxen zum Abhaken einzubauen.
 Zusätzlich wurde vorgeschlagen, in Zukunft Benachrichtigungen oder Erinnerungen für die Medikamenteneinnahme einzubauen. Dadurch könnte die App Nutzerinnen und Nutzer noch besser im Alltag unterstützen und helfen, Medikamente rechtzeitig einzunehmen.
+
+
