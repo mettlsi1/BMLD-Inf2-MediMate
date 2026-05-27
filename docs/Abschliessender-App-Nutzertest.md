@@ -41,6 +41,5 @@ Beim Medikamentenkalender war anfangs jedoch nicht sofort ersichtlich, dass Medi
 Zusätzlich wurde vorgeschlagen, in Zukunft Benachrichtigungen oder Erinnerungen für die Medikamenteneinnahme einzubauen. Dadurch könnte die App Nutzerinnen und Nutzer noch besser im Alltag unterstützen und helfen, Medikamente rechtzeitig einzunehmen.
 
 ## Auswertung: Test-Grid
-![Auswertung-Test-Grid](/images/Icon_Nutzertesting.png)
-
+![Auswertung-Test-Grid](/images/Auswertung-Test-Grid.png)
 
