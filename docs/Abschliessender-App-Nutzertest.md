@@ -5,7 +5,8 @@ Wir wissen, dass unsere App die wichtigsten Funktionen technisch korrekt ausfüh
 Nicht sicher waren wir uns jedcoh, ob neue Nutzerinnen und Nutzer die App ohne Erklärung sofort verstehen würden. Besonders beim Medikamentenkalender wussten wir nicht, ob die Abhakfunktion intuitiv genug erkennbar ist. Ebenfalls wollten wir herausfinden, ob die Blutdruckfunktion und die medizinischen Begriffe verständlich genug erklärt werden.
 
 ### Was möchten wir testen?
-![Icon_Nutzertesting](/images/Icon_Nutzertesting.png)\n
+![Icon_Nutzertesting](/images/Icon_Nutzertesting.png)
+
 Wir möchten testen, ob die Nutzerinnen und Nutzer die wichtigsten Funktionen unserer App selbstständig bedienen können. Dabei wollten wir besonders überprüfen:
 - ob Medikamente einfach hinzugefügt werden können
 - ob die Medikamentenübersicht verständlich ist
