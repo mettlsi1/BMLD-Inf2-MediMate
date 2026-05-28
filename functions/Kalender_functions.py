@@ -3,9 +3,6 @@ import pandas as pd
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 
-# Konstanten
-TIMES_OF_DAY = ["Morgen", "Mittag", "Abend"]
-
 def initialize_session_state(data_manager):
     """Initialisiert alle Session State Variablen."""
     default_values = {

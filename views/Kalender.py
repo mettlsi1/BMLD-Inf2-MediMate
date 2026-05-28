@@ -1,12 +1,10 @@
 import streamlit as st
-import calendar
 from datetime import datetime, timedelta
 from functions.Kalender_functions import (
     initialize_session_state,
     show_success_message,
     are_all_medications_taken_for_day,
-    organize_medications_by_day,
-    TIMES_OF_DAY
+    organize_medications_by_day
 )
 
 # Initialisiere Session State
@@ -78,9 +76,6 @@ if st.session_state.medikamente:
                                     if st.button(button_label, key=f"btn_{med_key}", use_container_width=True):
                                         st.session_state.taken_medications.append(med_key)
                                         st.session_state.show_success = True
-                                        
-                                        if are_all_medications_taken_for_day(st.session_state.medikamente, current_date, st.session_state.taken_medications):
-                                            st.session_state.show_balloons = True
                                         
                                         st.rerun()
                                 
