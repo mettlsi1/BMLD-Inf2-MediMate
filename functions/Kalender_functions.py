@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime, date, timedelta
+from collections import defaultdict
 
 # Konstanten
 TIMES_OF_DAY = ["Morgen", "Mittag", "Abend"]
@@ -75,7 +76,6 @@ def medication_due_on_date(med, date, start_date):
     return False
 
 def organize_medications_by_day(medications):
-    from collections import defaultdict
 
     today = datetime.now().date()
     schedule = {

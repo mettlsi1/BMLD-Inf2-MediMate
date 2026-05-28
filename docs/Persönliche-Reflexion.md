@@ -1,4 +1,4 @@
-## Persönliche-Reflexion
+# Persönliche-Reflexion
 
 Unser Informatik-App-Projekt verlief insgesamt sehr erfolgreich und wir konnten als Team viele positive Erfahrungen sammeln. Von Anfang an waren wir alle motiviert und engagiert, weshalb wir uns schnell darauf einigen konnten, welche Art von App wir entwickeln wollten. Dadurch konnten wir früh mit der Planung und Umsetzung beginnen.
 
