@@ -2,7 +2,7 @@
 
 -Your app to track your medication successfully-
 
-MediMate ist eine Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen. In der App können die eigenen Medikamente erfasst und auf einen Blick übersichtlich angeschaut werden. Die fällige Einnahem der erfassten Medikamente kann im Kalender eingesehen und abgehackt werden.
+MediMate ist eine Tracking-App für Medikamenteneinnahmen und Blutdruckmessungen. In der App können die eigenen Medikamente erfasst und auf einen Blick übersichtlich angeschaut werden. Die fällige Einnahme der erfassten Medikamente kann im Kalender eingesehen und abgehakt werden.
 Zudem bietet die App die Möglichkeit seine Blutdruckwerte nach jeder Messung einzutragen und graphisch darzustellen. Dies ist besonders nützlich für Personen mit blutdrucksenkenden Medikamenten.
 
 Link to the app:
